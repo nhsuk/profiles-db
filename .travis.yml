@@ -8,7 +8,7 @@ env:
   - DOCKER_REPO=nhsuk/profiles-db
   - DOCKER_USERNAME=nhsukautomata
 
-after_success:
+script:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
   - ./ci-deployment/docker_ci.sh
 
