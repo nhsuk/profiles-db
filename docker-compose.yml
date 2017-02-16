@@ -1,0 +1,10 @@
+version: '2.1'
+
+services:
+
+  profiles-db:
+    build:
+      context: .
+    ports:
+      - 27017:27017
+

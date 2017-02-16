@@ -11,7 +11,7 @@ A MongoDB 3.4 instance with the following properties will be running:
 | Property   | Value        |
 |:-----------|:-------------|
 | database   | profiles     |
-| collection | gp-surgeries |
+| collection | gps          |
 | port       | 27017        |
 
 The data is loaded from the `/data` directory.
