@@ -1,0 +1,6 @@
+#!/bin/sh
+
+cd . || exit
+
+docker-compose config
+
