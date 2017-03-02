@@ -1,0 +1,139 @@
+{
+    "_id": 36584,
+    "choicesId": 36584,
+    "syndicationId": 14696,
+    "name": "Abbotsbury Road Practice",
+    "odsCode": "J81055",
+    "address": {
+      "addressLines": [
+        "24 Abbotsbury Road",
+        "Weymouth",
+        "Dorset",
+        "Weymouth"
+      ],
+      "postcode": "DT4 0AE"
+    },
+    "location": {
+      "type": "Point",
+      "latitude": 50.6120300292969,
+      "longitude": -2.46197819709778
+    },
+    "contact": {
+      "telephone": "01305 780806",
+      "fax": "01305 762833",
+      "email": "carole.woodward@gp-J81055.nhs.uk"
+    },
+    "openingTimes": {
+      "reception": {
+        "sunday": [],
+        "monday": [
+          {
+            "opens": "07:30",
+            "closes": "18:30"
+          },
+          {
+            "opens": "18:30",
+            "closes": "20:00"
+          }
+        ],
+        "tuesday": [
+          {
+            "opens": "07:30",
+            "closes": "18:30"
+          },
+          {
+            "opens": "18:30",
+            "closes": "20:00"
+          }
+        ],
+        "wednesday": [
+          {
+            "opens": "07:30",
+            "closes": "08:00"
+          },
+          {
+            "opens": "08:00",
+            "closes": "18:30"
+          }
+        ],
+        "thursday": [
+          {
+            "opens": "07:30",
+            "closes": "18:30"
+          },
+          {
+            "opens": "18:30",
+            "closes": "19:30"
+          }
+        ],
+        "friday": [
+          {
+            "opens": "08:00",
+            "closes": "18:30"
+          }
+        ],
+        "saturday": []
+      },
+      "surgery": {
+        "sunday": [],
+        "monday": [
+          {
+            "opens": "07:30",
+            "closes": "18:30"
+          },
+          {
+            "opens": "18:30",
+            "closes": "20:00"
+          }
+        ],
+        "tuesday": [
+          {
+            "opens": "07:30",
+            "closes": "18:30"
+          },
+          {
+            "opens": "18:30",
+            "closes": "20:00"
+          }
+        ],
+        "wednesday": [
+          {
+            "opens": "07:30",
+            "closes": "08:00"
+          },
+          {
+            "opens": "08:00",
+            "closes": "18:30"
+          }
+        ],
+        "thursday": [
+          {
+            "opens": "07:30",
+            "closes": "18:30"
+          },
+          {
+            "opens": "18:30",
+            "closes": "19:30"
+          }
+        ],
+        "friday": [
+          {
+            "opens": "08:00",
+            "closes": "18:30"
+          }
+        ],
+        "saturday": []
+      }
+    },
+    "gpCounts": {
+      "male": 3,
+      "female": 2
+    },
+    "doctors": [
+      "Dr Peter John Hewett",
+      "Dr Hugh Stephen Priestley",
+      "Dr Christine Brown",
+      "Dr Andrew Ward",
+      "Dr Suzanne Lane"
+    ]
+  }
