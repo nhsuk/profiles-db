@@ -21,83 +21,42 @@ The data is loaded from the `/data` directory.
 Each successful build will result in an image being pushed to Docker Hub. They are available at [nhsuk/profiles-db](https://hub.docker.com/r/nhsuk/profiles-db/). Pull Requests created via GitHub result in an image tagged as `pr-{PR#}` e.g PR #9 would result in an image tag of `pr-9`.
 When PRs are merged into the main branch i.e. `master` images are tagged with both `master` and `latest`.
 
-## Example JSON
+## Data structure
+An example of the structure of the data stored in MongoDB can be found in the [Sample GP Data](sample-gp-data.json)
 
-```
-{
-  "_id": 41272,
-    "choicesId": 41272,
-    "syndicationId": 14533,
-    "name": "A Kumar",
-    "odsCode": "H85056",
-    "address": {
-      "addressLines": [
-        "143-145 Balham Hill",
-      "Balham",
-      "London",
-      "London"
-      ],
-      "postcode": "SW12 9DL"
-    },
-    "location": {
-      "type": "Point",
-      "latitude": 51.4488334655762,
-      "longitude": -0.147822931408882
-    },
-    "contact": {
-      "telephone": "020 86731776",
-      "fax": "020 86739955"
-    },
-    "openingTimes": {
-      "reception": {
-        "sunday": [],
-        "monday": [
-        {
-          "opens": "08:00",
-          "closes": "13:00"
-        },
-        {
-          "opens": "15:00",
-          "closes": "19:00"
-        }
-        ],
-        "tuesday": [
-        {
-          "opens": "08:00",
-          "closes": "13:00"
-        },
-        {
-          "opens": "15:00",
-          "closes": "19:00"
-        }
-        ],
-        ...
-      },
-      "surgery": {
-        "sunday": [],
-        "monday": [
-        {
-          "opens": "08:00",
-          "closes": "13:00"
-        },
-        {
-          "opens": "15:00",
-          "closes": "19:00"
-        }
-        ],
-        "tuesday": [
-        {
-          "opens": "08:00",
-          "closes": "13:00"
-        },
-        {
-          "opens": "15:00",
-          "closes": "19:00"
-        }
-        ],
-      ...
-      }
-    }
-}
-```
+The more complex sub objects are described below
+
+### Address
+
+The `address` member consists of an array of `addressLines` and a `postcode`. The member is always present and there will always be a `postcode` and at least one `addressLine`.
+
+### Location
+
+The `location` member consists of a `type` member that is always `Point`, and `latitude` and `longitude` members that are numbers. These members are always present.
+
+### Contact
+
+The `contact` member may include `telephone`, `fax` or `email`. The `contact` member is always present, but all sub-members are optional.
+
+### Opening times
+
+The `openingTimes` member may contain a `reception` and `surgery` sub-member.
+
+The sub-objects have members `sunday`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday` and `saturday`. If a `reception` and `surgery` member exists, all of the days of the week will be populated.
+
+A day member will contain an array of objects with `open` and `closes` members. An empty array means it is not open that day. The `open` and `closes` times are strings in the 24 hour format, i.e. `18:30`.
+
+The `openingTimes` member is optional, as are the `reception` and `surgery` sub-members.
+
+### Gp counts
+
+The `gpCounts` members will either contain both a `male` and `female` member, or a single `unknown` member, never all three. The member will always be present, and the sub-members will always contain a number.
+
+### Doctors
+
+The `doctors` member is always present and contains an array of strings. It may be an empty array.
+
+
+
+
 
