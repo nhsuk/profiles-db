@@ -8,7 +8,7 @@ COPY data/ /temp/
 COPY etc/ /etc/
 
 RUN mongod --fork --logpath /var/log/mongodb.log --config /etc/mongodb.conf \
-    && mongoimport --jsonArray -d profiles -c gps --file /temp/gp-data.json \
+    && mongoimport --jsonArray -d profiles -c gps --file /temp/gp-data-merged.json \
     && mongod --config /etc/mongodb.conf --shutdown \
     && chown -R mongodb /data/db2
 
