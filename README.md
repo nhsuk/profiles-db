@@ -27,7 +27,7 @@ Currently there are 2 sources of data:
 * GP data from the NHSChoices syndication feed. Handled by [gp-data-etl](https://github.com/nhsuk/gp-data-etl)
 * Patient Online Management Information (POMI) data from NHSDigital's indicator portal. Handled by [pomi-data-etl](https://github.com/nhsuk/pomi-data-etl)
 
-The output from each process is added to `./input`. Executing `./merge-data.sh` will produce a merged data set and add it to `./data` from where it will be loaded into the database.
+The output from each process is added to `./input`. Executing `./app.js` will create a merged data set and save it in `./data` from where it will be loaded into the database.
 
 ## Data structure
 
@@ -67,7 +67,7 @@ The `doctors` member is always present and contains an array of strings. It may 
 
 ### Supplier
 
-The `supplier` member is always present and contains a string representing the GP's booking system supplier or a blank string. GP booking system supplier values are one of `["EMIS","EMIS (I)","INPS","INPS (I)","Informatica","Microtest","NK","TPP"]`
+The `supplier` member is always present and contains a string representing the GP's booking system supplier or `undefined`. GP booking system supplier values are one of `["EMIS","EMIS (I)","INPS","INPS (I)","Informatica","Microtest","NK","TPP"]`
 
 ## Interrogating the json with [jq](https://stedolan.github.io/jq/)
 
