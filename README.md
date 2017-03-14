@@ -21,10 +21,19 @@ The data is loaded from the `/data` directory.
 Each successful build will result in an image being pushed to Docker Hub. They are available at [nhsuk/profiles-db](https://hub.docker.com/r/nhsuk/profiles-db/). Pull Requests created via GitHub result in an image tagged as `pr-{PR#}` e.g PR #9 would result in an image tag of `pr-9`.
 When PRs are merged into the main branch i.e. `master` images are tagged with both `master` and `latest`.
 
+## Merging data from multiple sources
+
+Currently there are 2 sources of data:
+* GP data from the NHSChoices syndication feed. Handled by [gp-data-etl](https://github.com/nhsuk/gp-data-etl)
+* Patient Online Management Information (POMI) data from NHSDigital's indicator portal. Handled by [pomi-data-etl](https://github.com/nhsuk/pomi-data-etl)
+
+The output from each process is added to `./input`. Executing `./app.js` will create a merged data set and save it in `./data` from where it will be loaded into the database.
+
 ## Data structure
+
 An example of the structure of the data stored in MongoDB can be found in the [Sample GP Data](sample-gp-data.json)
 
-The more complex sub objects are described below
+The more interesting sub objects are described below
 
 ### Address
 
@@ -56,7 +65,12 @@ The `gpCounts` members will either contain both a `male` and `female` member, or
 
 The `doctors` member is always present and contains an array of strings. It may be an empty array.
 
+### Supplier
 
+The `supplier` member is always present and contains a string representing the GP's booking system supplier or `undefined`. GP booking system supplier values are one of `["EMIS","EMIS (I)","INPS","INPS (I)","Informatica","Microtest","NK","TPP"]`
 
+## Interrogating the json with [jq](https://stedolan.github.io/jq/)
 
+* List suppliers: `jq -c 'unique_by(.Supplier) | [.[].Supplier]' input/pomi.json`
+* Find single item by `odsCode`: `jq 'select(.[].odsCode == "${odsCode}")' data/gp-data-merged.json`
 

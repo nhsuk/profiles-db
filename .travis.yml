@@ -1,3 +1,7 @@
+language: node_js
+node_js:
+  - node
+
 sudo: required
 
 services:
@@ -9,6 +13,9 @@ env:
   - DOCKER_USERNAME=nhsukautomata
 
 script:
+  - npm run test
+
+after_success:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
   - ./ci-deployment/docker_ci.sh
 

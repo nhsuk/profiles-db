@@ -1,0 +1,35 @@
+{
+  "name": "profiles-db",
+  "version": "0.1.0",
+  "description": "DB containing GP profile information",
+  "main": "app.js",
+  "scripts": {
+    "lint": "eslint --ext .js,.json .",
+    "lint-watch": "esw --watch .",
+    "start": "node app.js",
+    "test": "mocha --recursive test",
+    "test-watch": "npm run test -- --watch --reporter min"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nhsuk/profiles-db.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nhsuk/profiles-db/issues"
+  },
+  "homepage": "https://github.com/nhsuk/profiles-db#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.17.1",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-json": "^1.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-mocha": "^4.8.0",
+    "eslint-plugin-react": "^6.10.0",
+    "eslint-watch": "^3.0.1",
+    "mocha": "^3.2.0"
+  }
+}
