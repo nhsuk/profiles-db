@@ -1,2 +1,6 @@
 .DS_Store
+<<<<<<< HEAD
 node_modules/
+=======
+.idea/*
+>>>>>>> beb62a6... :leaves: add text indexes
