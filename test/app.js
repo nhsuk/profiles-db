@@ -5,13 +5,39 @@ require('../app');
 const expect = chai.expect;
 
 describe('app', () => {
-  it('should produce a merged file with the same number of records as the gp-data file', () => {
-    const gpData = fs.readFileSync('./input/gp-data.json');
-    const mergedData = fs.readFileSync('./data/gp-data-merged.json');
+  let gpJson;
+  let mergedJson;
+  let mergedData;
 
-    const gpJson = JSON.parse(gpData);
-    const mergedJson = JSON.parse(mergedData);
+  before('load the files and convert to JSON', () => {
+    const gpData = fs.readFileSync('./input/gp-data.json', 'utf8');
+    mergedData = fs.readFileSync('./data/gp-data-merged.json', 'utf8');
 
-    expect(gpJson.length).to.equal(mergedJson.length);
+    gpJson = JSON.parse(gpData);
+    mergedJson = JSON.parse(mergedData);
+  });
+
+  describe('the merged file', () => {
+    it('should produce a merged file with the same number of records as the gp-data file', () => {
+      expect(gpJson.length).to.equal(mergedJson.length);
+    });
+
+    it('should have objects with required members', () => {
+      mergedJson.forEach((item) => {
+        const requiredKeys = [
+          '_id',
+          'address',
+          'choicesId',
+          'contact',
+          'doctors',
+          'gpCounts',
+          'location',
+          'name',
+          'odsCode',
+          'syndicationId'
+        ];
+        expect(item).to.contain.all.keys(requiredKeys);
+      });
+    });
   });
 });

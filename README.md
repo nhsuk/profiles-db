@@ -67,7 +67,7 @@ The `doctors` member is always present and contains an array of strings. It may 
 
 ### Supplier
 
-The `supplier` member is always present and contains a string representing the GP's booking system supplier or `undefined`. GP booking system supplier values are one of `["EMIS","EMIS (I)","INPS","INPS (I)","Informatica","Microtest","NK","TPP"]`
+The `supplier` member is optional. When present it will contain a string representing the GP's booking system supplier. GP booking system supplier values are one of `["EMIS","EMIS (I)","INPS","INPS (I)","Informatica","Microtest","NK","TPP"]`
 
 ## Interrogating the json with [jq](https://stedolan.github.io/jq/)
 
