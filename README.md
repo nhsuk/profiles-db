@@ -41,11 +41,12 @@ The `address` member consists of an array of `addressLines` and a `postcode`. Th
 
 ### Location
 
-The `location` member consists of a `type` member that is always `Point`, and `latitude` and `longitude` members that are numbers. These members are always present.
+The `location` member is a GeoJSON object. It consists of a `type` member that is always `Point`, and a `coordinates` member that is an array of two numbers.
+The first number is the `longitude`, the second number is the `latitude`. These members are always populated.
 
 ### Contact
 
-The `contact` member may include `telephone`, `fax` or `email`. The `contact` member is always present, but all sub-members are optional.
+The `contact` member may include `telephone`, `fax`, `website`, or `email`. The `contact` member is always present, but all sub-members are optional.
 
 ### Opening times
 
@@ -69,8 +70,13 @@ The `doctors` member is always present and contains an array of strings. It may 
 
 The `supplier` member is optional. When present it will contain a string representing the GP's booking system supplier. GP booking system supplier values are one of `["EMIS","EMIS (I)","INPS","INPS (I)","Informatica","Microtest","NK","TPP"]`
 
+### Facilities
+
+The `facilities` member may contain `parking` or `accessibility` members. Each of these members holds an array of objects with properties `name` and `exists`.
+The `facilities` member is optional, as are the child members. When a child member is present it will always contain at least one item, and the `name` and `exists` members are always populated. 
+
+
 ## Interrogating the json with [jq](https://stedolan.github.io/jq/)
 
 * List suppliers: `jq -c 'unique_by(.Supplier) | [.[].Supplier]' input/pomi.json`
 * Find single item by `odsCode`: `jq 'select(.[].odsCode == "${odsCode}")' data/gp-data-merged.json`
-
