@@ -1,4 +1,5 @@
 const fs = require('fs');
+const getBookingSystem = require('./lib/utils').getBookingSystem;
 
 (function app() {
   console.time('Merging data took');
@@ -11,8 +12,10 @@ const fs = require('fs');
 
   const merged = gps.map((gp) => {
     const matchedPomi = pomi.find(item => item.GPPracticeCode === gp.odsCode);
-    // eslint-disable-next-line no-param-reassign
-    gp.supplier = matchedPomi ? matchedPomi.Supplier : undefined;
+    if (matchedPomi) {
+      // eslint-disable-next-line no-param-reassign
+      gp.bookingSystem = getBookingSystem(gp, matchedPomi);
+    }
     return gp;
   });
 
