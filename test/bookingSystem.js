@@ -1,5 +1,5 @@
 const chai = require('chai');
-const utils = require('../lib/utils');
+const utils = require('../lib/bookingSystem');
 
 const expect = chai.expect;
 

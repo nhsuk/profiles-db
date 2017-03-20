@@ -1,5 +1,5 @@
 const fs = require('fs');
-const getBookingSystem = require('./lib/utils').getBookingSystem;
+const getBookingSystem = require('./lib/bookingSystem').getBookingSystem;
 
 (function app() {
   console.time('Merging data took');
