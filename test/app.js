@@ -39,5 +39,43 @@ describe('app', () => {
         expect(item).to.contain.all.keys(requiredKeys);
       });
     });
+
+    describe('members with a booking system', () => {
+      const validSuppliers = [
+        'EMIS',
+        'EMIS (I)',
+        'INPS',
+        'INPS (I)',
+        'Informatica',
+        'Microtest',
+        'NK',
+        'TPP'
+      ];
+      const suppliersWithKnownLink = [
+        'EMIS',
+        'INPS',
+        'Informatica',
+        'Microtest',
+        'TPP'
+      ];
+
+      it('should have a valid supplier', () => {
+        mergedJson
+          .filter(unfiltered => unfiltered.bookingSystem)
+          .forEach((item) => {
+            expect(item.bookingSystem.supplier).to.be.oneOf(validSuppliers);
+          });
+      });
+
+      it('should have a bookOnlineLink for those suppliers with known links', () => {
+        mergedJson
+          .filter(unfiltered => unfiltered.bookingSystem)
+          .filter(item => suppliersWithKnownLink.indexOf(item.bookingSystem.supplier) > -1)
+          .forEach((filtered) => {
+            // eslint-disable-next-line no-unused-expressions
+            expect(filtered.bookingSystem.bookOnlineLink).to.not.be.undefined;
+          });
+      });
+    });
   });
 });

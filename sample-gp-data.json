@@ -1,193 +1,158 @@
 {
-    "_id" : 36584,
-    "choicesId" : 36584,
-    "syndicationId" : 14696,
-    "name" : "Abbotsbury Road Practice",
-    "odsCode" : "J81055",
-    "address" : {
-        "addressLines" : [ 
-            "24 Abbotsbury Road", 
-            "Weymouth", 
-            "Dorset", 
-            "Weymouth"
-        ],
-        "postcode" : "DT4 0AE"
-    },
-    "location" : {
-        "type" : "Point",
-        "coordinates" : [ 
-            -2.46197819709778, 
-            50.6120300292969
-        ]
-    },
-    "contact" : {
-        "website" : "http://www.abbotsburyroadsurgery.co.uk",
-        "telephone" : "01305 780806",
-        "fax" : "01305 762833",
-        "email" : "carole.woodward@gp-J81055.nhs.uk"
-    },
-    "openingTimes" : {
-        "reception" : {
-            "sunday" : [],
-            "monday" : [ 
-                {
-                    "opens" : "07:30",
-                    "closes" : "18:30"
-                }, 
-                {
-                    "opens" : "18:30",
-                    "closes" : "20:00"
-                }
-            ],
-            "tuesday" : [ 
-                {
-                    "opens" : "07:30",
-                    "closes" : "18:30"
-                }, 
-                {
-                    "opens" : "18:30",
-                    "closes" : "20:00"
-                }
-            ],
-            "wednesday" : [ 
-                {
-                    "opens" : "07:30",
-                    "closes" : "08:00"
-                }, 
-                {
-                    "opens" : "08:00",
-                    "closes" : "18:30"
-                }
-            ],
-            "thursday" : [ 
-                {
-                    "opens" : "07:30",
-                    "closes" : "18:30"
-                }, 
-                {
-                    "opens" : "18:30",
-                    "closes" : "19:30"
-                }
-            ],
-            "friday" : [ 
-                {
-                    "opens" : "08:00",
-                    "closes" : "18:30"
-                }
-            ],
-            "saturday" : []
-        },
-        "surgery" : {
-            "sunday" : [],
-            "monday" : [ 
-                {
-                    "opens" : "07:30",
-                    "closes" : "18:30"
-                }, 
-                {
-                    "opens" : "18:30",
-                    "closes" : "20:00"
-                }
-            ],
-            "tuesday" : [ 
-                {
-                    "opens" : "07:30",
-                    "closes" : "18:30"
-                }, 
-                {
-                    "opens" : "18:30",
-                    "closes" : "20:00"
-                }
-            ],
-            "wednesday" : [ 
-                {
-                    "opens" : "07:30",
-                    "closes" : "08:00"
-                }, 
-                {
-                    "opens" : "08:00",
-                    "closes" : "18:30"
-                }
-            ],
-            "thursday" : [ 
-                {
-                    "opens" : "07:30",
-                    "closes" : "18:30"
-                }, 
-                {
-                    "opens" : "18:30",
-                    "closes" : "19:30"
-                }
-            ],
-            "friday" : [ 
-                {
-                    "opens" : "08:00",
-                    "closes" : "18:30"
-                }
-            ],
-            "saturday" : []
-        }
-    },
-    "gpCounts" : {
-        "male" : 3,
-        "female" : 2
-    },
-    "doctors" : [ 
-        "Dr Peter John Hewett", 
-        "Dr Hugh Stephen Priestley", 
-        "Dr Christine Brown", 
-        "Dr Andrew Ward", 
-        "Dr Suzanne Lane"
+  "_id": 40565,
+  "choicesId": 40565,
+  "syndicationId": 2915,
+  "name": "Blackfriars",
+  "odsCode": "Y02622",
+  "address": {
+    "addressLines": [
+      "138 Chapel Street",
+      "Salford",
+      "England - Uk"
     ],
-    "facilities" : {
-        "parking" : [ 
-            {
-                "name" : "Car Parking",
-                "exists" : "Yes"
-            }, 
-            {
-                "name" : "Cycle parking",
-                "exists" : "Yes"
-            }, 
-            {
-                "name" : "Disabled parking",
-                "exists" : "Yes"
-            }
-        ],
-        "accessibility" : [ 
-            {
-                "name" : "Braille translation service",
-                "exists" : "No"
-            }, 
-            {
-                "name" : "Disabled parking",
-                "exists" : "Yes"
-            }, 
-            {
-                "name" : "Disabled WC",
-                "exists" : "Yes"
-            }, 
-            {
-                "name" : "Induction loop",
-                "exists" : "Yes"
-            }, 
-            {
-                "name" : "RNID typetalk",
-                "exists" : "No"
-            }, 
-            {
-                "name" : "Signing service available",
-                "exists" : "No"
-            }, 
-            {
-                "name" : "Step free access",
-                "exists" : "Yes"
-            }, 
-            {
-                "name" : "Wheelchair access",
-                "exists" : "Yes"
-            }
-        ]
+    "postcode": "M3 6AF"
+  },
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      -2.25422954559326,
+      53.4841384887695
+    ]
+  },
+  "contact": {
+    "telephone": "0161 819 4790",
+    "fax": "0161 819 4791"
+  },
+  "openingTimes": {
+    "reception": {
+      "sunday": [],
+      "monday": [
+        {
+          "opens": "08:00",
+          "closes": "20:30"
+        }
+      ],
+      "tuesday": [
+        {
+          "opens": "08:00",
+          "closes": "19:30"
+        }
+      ],
+      "wednesday": [
+        {
+          "opens": "08:00",
+          "closes": "20:30"
+        }
+      ],
+      "thursday": [
+        {
+          "opens": "08:00",
+          "closes": "18:30"
+        }
+      ],
+      "friday": [
+        {
+          "opens": "08:00",
+          "closes": "18:30"
+        }
+      ],
+      "saturday": []
     },
-    "supplier" : "TPP"
+    "surgery": {
+      "sunday": [],
+      "monday": [
+        {
+          "opens": "08:00",
+          "closes": "19:30"
+        }
+      ],
+      "tuesday": [
+        {
+          "opens": "08:00",
+          "closes": "19:30"
+        }
+      ],
+      "wednesday": [
+        {
+          "opens": "08:00",
+          "closes": "18:30"
+        }
+      ],
+      "thursday": [
+        {
+          "opens": "08:00",
+          "closes": "18:30"
+        }
+      ],
+      "friday": [
+        {
+          "opens": "08:00",
+          "closes": "18:30"
+        }
+      ],
+      "saturday": []
+    }
+  },
+  "gpCounts": {
+    "male": 1,
+    "female": 1
+  },
+  "doctors": [
+    "Dr. Babar Farooq",
+    "Dr Kish Iqbal"
+  ],
+  "facilities": {
+    "parking": [
+      {
+        "name": "Car Parking",
+        "exists": "Yes"
+      },
+      {
+        "name": "Disabled parking",
+        "exists": "NotSpecified"
+      },
+      {
+        "name": "Cycle parking",
+        "exists": "NotSpecified"
+      }
+    ],
+    "accessibility": [
+      {
+        "name": "Braille translation service",
+        "exists": "NotSpecified"
+      },
+      {
+        "name": "Disabled parking",
+        "exists": "Yes"
+      },
+      {
+        "name": "Disabled WC",
+        "exists": "Yes"
+      },
+      {
+        "name": "Induction loop",
+        "exists": "Yes"
+      },
+      {
+        "name": "RNID typetalk",
+        "exists": "NotSpecified"
+      },
+      {
+        "name": "Signing service available",
+        "exists": "NotSpecified"
+      },
+      {
+        "name": "Step free access",
+        "exists": "Yes"
+      },
+      {
+        "name": "Wheelchair access",
+        "exists": "Yes"
+      }
+    ]
+  },
+  "bookingSystem": {
+    "supplier": "EMIS",
+    "bookOnlineLink": "https://patient.emisaccess.co.uk/Account/Login"
+  }
 }
