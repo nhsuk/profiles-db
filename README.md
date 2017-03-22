@@ -94,6 +94,8 @@ The `services` member is optional and may contain the members `epsEnabled`, `mor
 `moreInformation` is optional free text.
 
 The `entries` array is always present and contains objects with members `title`, `code`, `availabilityTimes`, `introduction`, `gpReferralRequired` and `deliverer`. 
+`code` is the unique id within Syndication for that particular service type, i.e an `Asthma Clinic` is always `SVR0208` for all practices.
+`availabilityTimes` is free text to hold any additional availability times information.
 `gpReferralRequired` will be either `true` or `false`. 
 `availabilityTimes` and `introduction` are optional.
 All other members will be present and populated.
