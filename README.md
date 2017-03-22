@@ -33,7 +33,11 @@ The output from each process is added to `./input`. Executing `./app.js` will cr
 
 An example of the structure of the data stored in MongoDB can be found in the [Sample GP Data](sample-gp-data.json)
 
-The more interesting sub objects are described below
+The more interesting members are described below
+
+### displayName
+
+`displayName` contains the `name` member  adjusted to title case in an attempt to fix names that have been entered in all capitals.
 
 ### Address
 
@@ -83,6 +87,18 @@ website is unknown.
 The `facilities` member may contain `parking` or `accessibility` members. Each of these members holds an array of objects with properties `name` and `exists`.
 The `facilities` member is optional, as are the child members. When a child member is present it will always contain at least one item, and the `name` and `exists` members are always populated.
 
+### Services
+
+The `services` member is optional and may contain the members `epsEnabled`, `moreInformaton`, or `entries`. 
+`epsEnabled` is optional and will be `true` if the practice provides the Electronic Prescription Service.
+`moreInformation` is optional free text.
+
+The `entries` array is always present and contains objects with members `title`, `code`, `availabilityTimes`, `introduction`, `gpReferralRequired` and `deliverer`. 
+`code` is the unique id within Syndication for that particular service type, i.e an `Asthma Clinic` is always `SVR0208` for all practices.
+`availabilityTimes` is free text to hold any additional availability times information.
+`gpReferralRequired` will be either `true` or `false`. 
+`availabilityTimes` and `introduction` are optional.
+All other members will be present and populated.
 
 ## Interrogating the json with [jq](https://stedolan.github.io/jq/)
 
