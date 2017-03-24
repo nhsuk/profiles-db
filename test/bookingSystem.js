@@ -56,7 +56,7 @@ describe('utils', () => {
         // eslint-disable-next-line no-unused-expressions
         expect(bookingSystem).to.not.be.undefined;
         expect(bookingSystem.bookOnlineLink)
-          .to.be.equal('https://www.myvisiononline.co.uk/vpp/');
+          .to.be.equal('https://www.patient-services.co.uk/web/ps/login');
       });
 
       it('should return the suppliers system address for Informatica', () => {
@@ -68,7 +68,7 @@ describe('utils', () => {
         // eslint-disable-next-line no-unused-expressions
         expect(bookingSystem).to.not.be.undefined;
         expect(bookingSystem.bookOnlineLink)
-          .to.be.equal('https://www.myvisiononline.co.uk/vpp/');
+          .to.be.equal('https://www.patient-services.co.uk/web/ps/login');
       });
 
       it('should return the suppliers system address for Microtest', () => {
