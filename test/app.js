@@ -4,7 +4,8 @@ require('../app');
 
 const expect = chai.expect;
 
-describe('app', () => {
+describe('app', function () {
+  this.timeout(3000);
   let gpJson;
   let mergedJson;
   let mergedData;
