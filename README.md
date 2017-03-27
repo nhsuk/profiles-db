@@ -1,6 +1,7 @@
 # Dockerised repo for MongoDB, containing GP profile data
 
 [![Build Status](https://travis-ci.org/nhsuk/profiles-db.svg?branch=master)](https://travis-ci.org/nhsuk/profiles-db)
+[![Known Vulnerabilities](https://snyk.io/test/github/nhsuk/profiles-db/badge.svg)](https://snyk.io/test/github/nhsuk/profiles-db)
 
 ## Running the container
 
