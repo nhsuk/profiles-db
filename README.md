@@ -28,7 +28,7 @@ Currently there are 2 sources of data:
 * GP data from the NHSChoices syndication feed. Handled by [gp-data-etl](https://github.com/nhsuk/gp-data-etl)
 * Patient Online Management Information (POMI) data from NHSDigital's indicator portal. Handled by [pomi-data-etl](https://github.com/nhsuk/pomi-data-etl)
 
-The output from each process is added to `./input`. Executing `./app.js` will create a merged data set and save it in `./data` from where it will be loaded into the database.
+The output from each process is added to `./input`. Executing `npm start` will create a merged data set and save it in `./data` from where it will be loaded into the database.
 
 ## Data structure
 
@@ -36,7 +36,7 @@ An example of the structure of the data stored in MongoDB can be found in the [S
 
 The more interesting members are described below
 
-### displayName
+### Display name
 
 `displayName` contains the `name` member  adjusted to title case in an attempt to fix names that have been entered in all capitals.
 
@@ -55,15 +55,17 @@ The `contact` member may include `telephone`, `fax`, `website`, or `email`. The 
 
 ### Opening times
 
-The `openingTimes` member may contain a `reception` and `surgery` sub-member.
+The `openingTimes` member may contain a `reception`, `surgery` and `alteration` sub-member.
 
-The sub-objects have members `sunday`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday` and `saturday`. If a `reception` and `surgery` member exists, all of the days of the week will be populated.
+The `reception` and `surgery` members themselves have members `sunday`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday` and `saturday`. If a `reception` and `surgery` member exists, all of the days of the week will be populated.
 
 A day member will contain an array of objects with `open` and `closes` members. An empty array means it is not open that day. The `open` and `closes` times are strings in the 24 hour format, i.e. `18:30`.
 
-The `openingTimes` member is optional, as are the `reception` and `surgery` sub-members.
+The `alteration` sub-object contains members for each date the practice opening hours change from the standard. The date in the format `yyyy-MM-dd`, i.e. `2017-12-25`. The array of objects contained in the member is the same structure as the day member above.
 
-### Gp counts
+The `openingTimes` member is optional, as are the `reception`, `surgery` and `alteration` sub-members.
+
+### GP counts
 
 The `gpCounts` members will either contain both a `male` and `female` member, or a single `unknown` member, never all three. The member will always be present, and the sub-members will always contain a number.
 
@@ -71,7 +73,11 @@ The `gpCounts` members will either contain both a `male` and `female` member, or
 
 The `doctors` member is always present and contains an array of strings. It may be an empty array.
 
-### Booking System
+### Accepting new patients
+
+The `acceptingNewPatients` member is always present and will contain `true` or `false`.
+
+### Booking system
 
 The `bookingSystem` member is optional. When present it will contain an object
 consisting of a `supplier` member and an optional `bookOnlineLink` member.

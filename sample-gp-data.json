@@ -127,6 +127,19 @@
                 }
             ],
             "saturday" : []
+        },
+        "alterations" : {
+            "2014-05-05" : [],
+            "2014-05-26" : [],
+            "2014-12-24" : [
+                {
+                    "opens" : "08:00",
+                    "closes" : "12:30"
+                }
+            ],
+            "2014-12-25" : [],
+            "2014-12-26" : [],
+            "2015-01-01" : []
         }
     },
     "gpCounts" : {
@@ -140,6 +153,7 @@
         "Dr Andrew Ward", 
         "Dr Suzanne Lane"
     ],
+    "acceptingNewPatients" : true,
     "facilities" : {
         "parking" : [ 
             {
@@ -214,5 +228,6 @@
     "bookingSystem" : {
         "supplier" : "TPP",
         "bookOnlineLink" : "https://systmonline.tpp-uk.com/Login?PracticeId=J81055"
-    }
+    },
+    "searchWords" : "24 abbotsbury road weymouth dorset dt4 0ae practice"
 }
