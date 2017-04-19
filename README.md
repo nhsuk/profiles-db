@@ -82,8 +82,10 @@ The `acceptingNewPatients` member is always present and will contain `true` or `
 The `bookingSystem` member is optional. When present it will contain an object
 consisting of a `supplier` member and an optional `bookOnlineLink` member.
 `supplier` is a string, representing the GP's booking system supplier. The
-value is one of
-`["EMIS","EMIS (I)","INPS","INPS (I)","Informatica","Microtest","NK","TPP"]`.
+value will be one of the suppliers listed below
+`["EMIS","INPS","Informatica","Microtest","NK","TPP"]`. Or one of these values
+with an `(I)` appended e.g. `EMIS (I)`. The addition of `(I)` represents a GP
+that is now using the Informatica system.
 `bookOnlineLink` is  string representing the best link we know about to use for
 accessing that GP's online booking system. It will be the link to the booking
 system or the GP's website if the system is unknown. And no value is the GP's

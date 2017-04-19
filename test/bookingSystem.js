@@ -134,22 +134,10 @@ describe('utils', () => {
         expect(bookingSystem.bookOnlineLink).to.be.undefined;
       });
 
-      it('should return the GPs website address for EMIS (I) link', () => {
+      it('should return the GPs website address for a booking system that ends in (I)', () => {
         const gpData = getBaseGpData();
         gpData.contact = { website: gpWebsite };
-        const bookingSystemData = getBaseBookingSystemData('EMIS (I)');
-
-        const bookingSystem = utils.getBookingSystem(gpData, bookingSystemData);
-
-        // eslint-disable-next-line no-unused-expressions
-        expect(bookingSystem).to.not.be.undefined;
-        expect(bookingSystem.bookOnlineLink).to.be.equal(gpWebsite);
-      });
-
-      it('should return the GPs website address for INPS (I) link', () => {
-        const gpData = getBaseGpData();
-        gpData.contact = { website: gpWebsite };
-        const bookingSystemData = getBaseBookingSystemData('INPS (I)');
+        const bookingSystemData = getBaseBookingSystemData('NEW SYSTEM (I)');
 
         const bookingSystem = utils.getBookingSystem(gpData, bookingSystemData);
 
