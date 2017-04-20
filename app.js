@@ -2,24 +2,25 @@ const fs = require('fs');
 const getBookingSystem = require('./lib/bookingSystem').getBookingSystem;
 
 (function app() {
-  console.time('Merging data took');
+  const bookingSystemTimerMsg = 'Merging Booking System data took';
+  console.time(bookingSystemTimerMsg);
 
-  const pomiData = fs.readFileSync('./input/pomi.json');
+  const bookingSystemData = fs.readFileSync('./input/booking.json');
   const gpData = fs.readFileSync('./input/gp-data.json');
 
   const gps = JSON.parse(gpData);
-  const pomi = JSON.parse(pomiData);
+  const bookingSystems = JSON.parse(bookingSystemData);
 
   const merged = gps.map((gp) => {
-    const matchedPomi = pomi.find(item => item.GPPracticeCode === gp.odsCode);
-    if (matchedPomi) {
+    const matchedBookingSystem = bookingSystems.find(item => item.GPPracticeCode === gp.odsCode);
+    if (matchedBookingSystem) {
       // eslint-disable-next-line no-param-reassign
-      gp.bookingSystem = getBookingSystem(gp, matchedPomi);
+      gp.bookingSystem = getBookingSystem(gp, matchedBookingSystem);
     }
     return gp;
   });
 
   fs.writeFileSync('./data/gp-data-merged.json', JSON.stringify(merged), 'utf8');
 
-  console.timeEnd('Merging data took');
+  console.timeEnd(bookingSystemTimerMsg);
 }());

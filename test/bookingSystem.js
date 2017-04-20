@@ -8,7 +8,7 @@ describe('utils', () => {
     const odsCode = 'A12345';
     const gpWebsite = 'http://gp.website.com';
 
-    function getBasePomiData(supplier) {
+    function getBaseBookingSystemData(supplier) {
       return {
         PeriodEnd: '31/12/2016',
         GPPracticeCode: odsCode,
@@ -24,9 +24,9 @@ describe('utils', () => {
       it('should return the GPs website when there is no supplier', () => {
         const gpData = getBaseGpData();
         gpData.contact = { website: gpWebsite };
-        const pomiData = getBasePomiData();
+        const bookingSystemData = getBaseBookingSystemData();
 
-        const bookingSystem = utils.getBookingSystem(gpData, pomiData);
+        const bookingSystem = utils.getBookingSystem(gpData, bookingSystemData);
 
         // eslint-disable-next-line no-unused-expressions
         expect(bookingSystem).to.not.be.undefined;
@@ -37,9 +37,9 @@ describe('utils', () => {
     describe('for known systems', () => {
       it('should return the suppliers system address for EMIS', () => {
         const gpData = getBaseGpData();
-        const pomiData = getBasePomiData('EMIS');
+        const bookingSystemData = getBaseBookingSystemData('EMIS');
 
-        const bookingSystem = utils.getBookingSystem(gpData, pomiData);
+        const bookingSystem = utils.getBookingSystem(gpData, bookingSystemData);
 
         // eslint-disable-next-line no-unused-expressions
         expect(bookingSystem).to.not.be.undefined;
@@ -49,9 +49,9 @@ describe('utils', () => {
 
       it('should return the suppliers system address for INPS', () => {
         const gpData = getBaseGpData();
-        const pomiData = getBasePomiData('INPS');
+        const bookingSystemData = getBaseBookingSystemData('INPS');
 
-        const bookingSystem = utils.getBookingSystem(gpData, pomiData);
+        const bookingSystem = utils.getBookingSystem(gpData, bookingSystemData);
 
         // eslint-disable-next-line no-unused-expressions
         expect(bookingSystem).to.not.be.undefined;
@@ -61,9 +61,9 @@ describe('utils', () => {
 
       it('should return the suppliers system address for Informatica', () => {
         const gpData = getBaseGpData();
-        const pomiData = getBasePomiData('Informatica');
+        const bookingSystemData = getBaseBookingSystemData('Informatica');
 
-        const bookingSystem = utils.getBookingSystem(gpData, pomiData);
+        const bookingSystem = utils.getBookingSystem(gpData, bookingSystemData);
 
         // eslint-disable-next-line no-unused-expressions
         expect(bookingSystem).to.not.be.undefined;
@@ -73,9 +73,9 @@ describe('utils', () => {
 
       it('should return the suppliers system address for Microtest', () => {
         const gpData = getBaseGpData();
-        const pomiData = getBasePomiData('Microtest');
+        const bookingSystemData = getBaseBookingSystemData('Microtest');
 
-        const bookingSystem = utils.getBookingSystem(gpData, pomiData);
+        const bookingSystem = utils.getBookingSystem(gpData, bookingSystemData);
 
         // eslint-disable-next-line no-unused-expressions
         expect(bookingSystem).to.not.be.undefined;
@@ -86,9 +86,9 @@ describe('utils', () => {
       it('should return the GPs website address for NK', () => {
         const gpData = getBaseGpData();
         gpData.contact = { website: gpWebsite };
-        const pomiData = getBasePomiData('NK');
+        const bookingSystemData = getBaseBookingSystemData('NK');
 
-        const bookingSystem = utils.getBookingSystem(gpData, pomiData);
+        const bookingSystem = utils.getBookingSystem(gpData, bookingSystemData);
 
         // eslint-disable-next-line no-unused-expressions
         expect(bookingSystem).to.not.be.undefined;
@@ -97,9 +97,9 @@ describe('utils', () => {
 
       it('should return undefined when no GP website is available for NK', () => {
         const gpData = getBaseGpData();
-        const pomiData = getBasePomiData('NK');
+        const bookingSystemData = getBaseBookingSystemData('NK');
 
-        const bookingSystem = utils.getBookingSystem(gpData, pomiData);
+        const bookingSystem = utils.getBookingSystem(gpData, bookingSystemData);
 
         // eslint-disable-next-line no-unused-expressions
         expect(bookingSystem).to.not.be.undefined;
@@ -109,9 +109,9 @@ describe('utils', () => {
 
       it('should return the suppliers system address for TPP', () => {
         const gpData = getBaseGpData();
-        const pomiData = getBasePomiData('TPP');
+        const bookingSystemData = getBaseBookingSystemData('TPP');
 
-        const bookingSystem = utils.getBookingSystem(gpData, pomiData);
+        const bookingSystem = utils.getBookingSystem(gpData, bookingSystemData);
 
         // eslint-disable-next-line no-unused-expressions
         expect(bookingSystem).to.not.be.undefined;
@@ -124,9 +124,9 @@ describe('utils', () => {
     describe('for unknown systems', () => {
       it('should return undefined when no GP website is available', () => {
         const gpData = getBaseGpData();
-        const pomiData = getBasePomiData('EMIS (I)');
+        const bookingSystemData = getBaseBookingSystemData('EMIS (I)');
 
-        const bookingSystem = utils.getBookingSystem(gpData, pomiData);
+        const bookingSystem = utils.getBookingSystem(gpData, bookingSystemData);
 
         // eslint-disable-next-line no-unused-expressions
         expect(bookingSystem).to.not.be.undefined;
@@ -134,24 +134,12 @@ describe('utils', () => {
         expect(bookingSystem.bookOnlineLink).to.be.undefined;
       });
 
-      it('should return the GPs website address for EMIS (I) link', () => {
+      it('should return the GPs website address for a booking system that ends in (I)', () => {
         const gpData = getBaseGpData();
         gpData.contact = { website: gpWebsite };
-        const pomiData = getBasePomiData('EMIS (I)');
+        const bookingSystemData = getBaseBookingSystemData('NEW SYSTEM (I)');
 
-        const bookingSystem = utils.getBookingSystem(gpData, pomiData);
-
-        // eslint-disable-next-line no-unused-expressions
-        expect(bookingSystem).to.not.be.undefined;
-        expect(bookingSystem.bookOnlineLink).to.be.equal(gpWebsite);
-      });
-
-      it('should return the GPs website address for INPS (I) link', () => {
-        const gpData = getBaseGpData();
-        gpData.contact = { website: gpWebsite };
-        const pomiData = getBasePomiData('INPS (I)');
-
-        const bookingSystem = utils.getBookingSystem(gpData, pomiData);
+        const bookingSystem = utils.getBookingSystem(gpData, bookingSystemData);
 
         // eslint-disable-next-line no-unused-expressions
         expect(bookingSystem).to.not.be.undefined;

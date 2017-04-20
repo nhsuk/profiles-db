@@ -44,9 +44,7 @@ describe('app', function () {
     describe('members with a booking system', () => {
       const validSuppliers = [
         'EMIS',
-        'EMIS (I)',
         'INPS',
-        'INPS (I)',
         'Informatica',
         'Microtest',
         'NK',
@@ -64,7 +62,12 @@ describe('app', function () {
         mergedJson
           .filter(unfiltered => unfiltered.bookingSystem)
           .forEach((item) => {
-            expect(item.bookingSystem.supplier).to.be.oneOf(validSuppliers);
+            const supplier = item.bookingSystem.supplier;
+            if (supplier.indexOf('(I)') > 0) {
+              expect(supplier).to.have.string('(I)');
+            } else {
+              expect(supplier).to.be.oneOf(validSuppliers);
+            }
           });
       });
 
