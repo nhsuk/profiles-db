@@ -1,26 +1,42 @@
 const fs = require('fs');
-const getBookingSystem = require('./lib/bookingSystem').getBookingSystem;
+const onlineServices = require('./lib/onlineServices');
+
+function findByOdsCode(data, odsCode) {
+  return data.find(item => item.GPPracticeCode === odsCode);
+}
 
 (function app() {
-  const bookingSystemTimerMsg = 'Merging Booking System data took';
-  console.time(bookingSystemTimerMsg);
+  const timerMsg = 'Merging POMI data took';
+  console.time(timerMsg);
 
   const bookingSystemData = fs.readFileSync('./input/booking.json');
+  const scriptData = fs.readFileSync('./input/scripts.json');
   const gpData = fs.readFileSync('./input/gp-data.json');
 
   const gps = JSON.parse(gpData);
   const bookingSystems = JSON.parse(bookingSystemData);
+  const scriptSystems = JSON.parse(scriptData);
 
   const merged = gps.map((gp) => {
-    const matchedBookingSystem = bookingSystems.find(item => item.GPPracticeCode === gp.odsCode);
+    // eslint-disable-next-line no-param-reassign
+    gp.onlineServices = {};
+
+    const matchedBookingSystem = findByOdsCode(bookingSystems, gp.odsCode);
     if (matchedBookingSystem) {
       // eslint-disable-next-line no-param-reassign
-      gp.bookingSystem = getBookingSystem(gp, matchedBookingSystem);
+      gp.bookingSystem = onlineServices.getBookingSystem(gp, matchedBookingSystem);
+    }
+
+    const matchedScriptSystem = findByOdsCode(scriptSystems, gp.odsCode);
+    if (matchedScriptSystem) {
+      // eslint-disable-next-line no-param-reassign
+      gp.onlineServices.repeatPrescriptions =
+        onlineServices.getRepeatPrescriptionSystem(gp, matchedScriptSystem);
     }
     return gp;
   });
 
   fs.writeFileSync('./data/gp-data-merged.json', JSON.stringify(merged), 'utf8');
 
-  console.timeEnd(bookingSystemTimerMsg);
+  console.timeEnd(timerMsg);
 }());

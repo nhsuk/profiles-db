@@ -67,6 +67,7 @@ members are always populated.
 
 The `contact` member may include `telephone`, `fax`, `website`, or `email`. The
 `contact` member is always present, but all sub-members are optional.
+`website` will always have a protocol.
 
 ### Opening times
 
@@ -106,6 +107,28 @@ be an empty array.
 The `acceptingNewPatients` member is always present and will contain `true` or
 `false`.
 
+### Online Services
+
+The `onlineServices` member is always present, however, the contents of it are
+optional. Optional members of `onlineServices` are:
+
+#### Repeat Prescriptions
+
+The `repeatPrescriptions` is an optional member of `onlineServices`. When
+present it will contain an object consisting of a `supplier` member and an
+optional `url` member.
+
+`supplier` is a string, representing the GP's supplier for the type of system
+the member represents e.g. repeat prescrpition ordering system.
+The value will be one of the suppliers listed below
+`["EMIS","INPS","Informatica","Microtest","NK","TPP"]`. Or one of these values
+with an `(I)` appended e.g. `EMIS (I)`. The addition of `(I)` represents a GP
+that is now using the Informatica system.
+`url` is a string representing the best link we know about to use for
+accessing that GP's online system. It will be a direct link to the system or
+the GP's website if the system is unknown. And no value is the GP's
+website is unknown.
+
 ### Booking system
 
 The `bookingSystem` member is optional. When present it will contain an object
@@ -115,7 +138,7 @@ value will be one of the suppliers listed below
 `["EMIS","INPS","Informatica","Microtest","NK","TPP"]`. Or one of these values
 with an `(I)` appended e.g. `EMIS (I)`. The addition of `(I)` represents a GP
 that is now using the Informatica system.
-`bookOnlineLink` is  string representing the best link we know about to use for
+`bookOnlineLink` is a string representing the best link we know about to use for
 accessing that GP's online booking system. It will be the link to the booking
 system or the GP's website if the system is unknown. And no value is the GP's
 website is unknown.
@@ -147,4 +170,5 @@ All other members will be present and populated.
 ## Interrogating the json with [jq](https://stedolan.github.io/jq/)
 
 * List suppliers: `jq -c 'unique_by(.Supplier) | [.[].Supplier]' input/pomi.json`
-* Find single item by `odsCode`: `jq 'select(.[].odsCode == "${odsCode}")' data/gp-data-merged.json`
+* Find single item by `odsCode`:
+  `jq '.[] | select(.odsCode == "${odsCode}")' data/gp-data-merged.json`
