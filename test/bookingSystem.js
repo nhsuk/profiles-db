@@ -1,9 +1,9 @@
 const chai = require('chai');
-const utils = require('../lib/bookingSystem');
+const onlineServices = require('../lib/onlineServices');
 
 const expect = chai.expect;
 
-describe('utils', () => {
+describe('onlineServices', () => {
   describe('getBookingSystem', () => {
     const odsCode = 'A12345';
     const gpWebsite = 'http://gp.website.com';
@@ -26,7 +26,7 @@ describe('utils', () => {
         gpData.contact = { website: gpWebsite };
         const bookingSystemData = getBaseBookingSystemData();
 
-        const bookingSystem = utils.getBookingSystem(gpData, bookingSystemData);
+        const bookingSystem = onlineServices.getBookingSystem(gpData, bookingSystemData);
 
         // eslint-disable-next-line no-unused-expressions
         expect(bookingSystem).to.not.be.undefined;
@@ -39,7 +39,7 @@ describe('utils', () => {
         const gpData = getBaseGpData();
         const bookingSystemData = getBaseBookingSystemData('EMIS');
 
-        const bookingSystem = utils.getBookingSystem(gpData, bookingSystemData);
+        const bookingSystem = onlineServices.getBookingSystem(gpData, bookingSystemData);
 
         // eslint-disable-next-line no-unused-expressions
         expect(bookingSystem).to.not.be.undefined;
@@ -51,7 +51,7 @@ describe('utils', () => {
         const gpData = getBaseGpData();
         const bookingSystemData = getBaseBookingSystemData('INPS');
 
-        const bookingSystem = utils.getBookingSystem(gpData, bookingSystemData);
+        const bookingSystem = onlineServices.getBookingSystem(gpData, bookingSystemData);
 
         // eslint-disable-next-line no-unused-expressions
         expect(bookingSystem).to.not.be.undefined;
@@ -63,7 +63,7 @@ describe('utils', () => {
         const gpData = getBaseGpData();
         const bookingSystemData = getBaseBookingSystemData('Informatica');
 
-        const bookingSystem = utils.getBookingSystem(gpData, bookingSystemData);
+        const bookingSystem = onlineServices.getBookingSystem(gpData, bookingSystemData);
 
         // eslint-disable-next-line no-unused-expressions
         expect(bookingSystem).to.not.be.undefined;
@@ -75,7 +75,7 @@ describe('utils', () => {
         const gpData = getBaseGpData();
         const bookingSystemData = getBaseBookingSystemData('Microtest');
 
-        const bookingSystem = utils.getBookingSystem(gpData, bookingSystemData);
+        const bookingSystem = onlineServices.getBookingSystem(gpData, bookingSystemData);
 
         // eslint-disable-next-line no-unused-expressions
         expect(bookingSystem).to.not.be.undefined;
@@ -88,7 +88,7 @@ describe('utils', () => {
         gpData.contact = { website: gpWebsite };
         const bookingSystemData = getBaseBookingSystemData('NK');
 
-        const bookingSystem = utils.getBookingSystem(gpData, bookingSystemData);
+        const bookingSystem = onlineServices.getBookingSystem(gpData, bookingSystemData);
 
         // eslint-disable-next-line no-unused-expressions
         expect(bookingSystem).to.not.be.undefined;
@@ -99,7 +99,7 @@ describe('utils', () => {
         const gpData = getBaseGpData();
         const bookingSystemData = getBaseBookingSystemData('NK');
 
-        const bookingSystem = utils.getBookingSystem(gpData, bookingSystemData);
+        const bookingSystem = onlineServices.getBookingSystem(gpData, bookingSystemData);
 
         // eslint-disable-next-line no-unused-expressions
         expect(bookingSystem).to.not.be.undefined;
@@ -111,7 +111,7 @@ describe('utils', () => {
         const gpData = getBaseGpData();
         const bookingSystemData = getBaseBookingSystemData('TPP');
 
-        const bookingSystem = utils.getBookingSystem(gpData, bookingSystemData);
+        const bookingSystem = onlineServices.getBookingSystem(gpData, bookingSystemData);
 
         // eslint-disable-next-line no-unused-expressions
         expect(bookingSystem).to.not.be.undefined;
@@ -126,7 +126,7 @@ describe('utils', () => {
         const gpData = getBaseGpData();
         const bookingSystemData = getBaseBookingSystemData('EMIS (I)');
 
-        const bookingSystem = utils.getBookingSystem(gpData, bookingSystemData);
+        const bookingSystem = onlineServices.getBookingSystem(gpData, bookingSystemData);
 
         // eslint-disable-next-line no-unused-expressions
         expect(bookingSystem).to.not.be.undefined;
@@ -139,7 +139,7 @@ describe('utils', () => {
         gpData.contact = { website: gpWebsite };
         const bookingSystemData = getBaseBookingSystemData('NEW SYSTEM (I)');
 
-        const bookingSystem = utils.getBookingSystem(gpData, bookingSystemData);
+        const bookingSystem = onlineServices.getBookingSystem(gpData, bookingSystemData);
 
         // eslint-disable-next-line no-unused-expressions
         expect(bookingSystem).to.not.be.undefined;

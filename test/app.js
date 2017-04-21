@@ -4,6 +4,23 @@ require('../app');
 
 const expect = chai.expect;
 
+function expectSupplierToBeValid(supplier) {
+  const validSuppliers = [
+    'EMIS',
+    'INPS',
+    'Informatica',
+    'Microtest',
+    'NK',
+    'TPP'
+  ];
+
+  if (supplier.indexOf('(I)') > 0) {
+    expect(supplier).to.have.string('(I)');
+  } else {
+    expect(supplier).to.be.oneOf(validSuppliers);
+  }
+}
+
 describe('app', function () {
   this.timeout(3000);
   let gpJson;
@@ -19,6 +36,14 @@ describe('app', function () {
   });
 
   describe('the merged file', () => {
+    const suppliersWithKnownLink = [
+      'EMIS',
+      'INPS',
+      'Informatica',
+      'Microtest',
+      'TPP'
+    ];
+
     it('should produce a merged file with the same number of records as the gp-data file', () => {
       expect(gpJson.length).to.equal(mergedJson.length);
     });
@@ -42,32 +67,12 @@ describe('app', function () {
     });
 
     describe('members with a booking system', () => {
-      const validSuppliers = [
-        'EMIS',
-        'INPS',
-        'Informatica',
-        'Microtest',
-        'NK',
-        'TPP'
-      ];
-      const suppliersWithKnownLink = [
-        'EMIS',
-        'INPS',
-        'Informatica',
-        'Microtest',
-        'TPP'
-      ];
-
       it('should have a valid supplier', () => {
         mergedJson
           .filter(unfiltered => unfiltered.bookingSystem)
           .forEach((item) => {
             const supplier = item.bookingSystem.supplier;
-            if (supplier.indexOf('(I)') > 0) {
-              expect(supplier).to.have.string('(I)');
-            } else {
-              expect(supplier).to.be.oneOf(validSuppliers);
-            }
+            expectSupplierToBeValid(supplier);
           });
       });
 
@@ -78,6 +83,28 @@ describe('app', function () {
           .forEach((filtered) => {
             // eslint-disable-next-line no-unused-expressions
             expect(filtered.bookingSystem.bookOnlineLink).to.not.be.undefined;
+          });
+      });
+    });
+
+    describe('members with an online repeat prescription system', () => {
+      it('should have a valid supplier', () => {
+        mergedJson
+          .filter(unfiltered => unfiltered.onlineServices.repeatPrescriptions)
+          .forEach((item) => {
+            const supplier = item.onlineServices.repeatPrescriptions.supplier;
+            expectSupplierToBeValid(supplier);
+          });
+      });
+
+      it('should have a link for those suppliers with known links', () => {
+        mergedJson
+          .filter(unfiltered => unfiltered.onlineServices.repeatPrescriptions)
+          .filter(item =>
+            suppliersWithKnownLink.indexOf(item.onlineServices.repeatPrescriptions.supplier) > -1)
+          .forEach((filtered) => {
+            // eslint-disable-next-line no-unused-expressions
+            expect(filtered.onlineServices.repeatPrescriptions.url).to.not.be.undefined;
           });
       });
     });
