@@ -119,7 +119,7 @@ present it will contain an object consisting of a `supplier` member and an
 optional `url` member.
 
 `supplier` is a string, representing the GP's supplier for the type of system
-the member represents e.g. repeat prescrpition ordering system.
+the member represents e.g. repeat prescription ordering system.
 The value will be one of the suppliers listed below
 `["EMIS","INPS","Informatica","Microtest","NK","TPP"]`. Or one of these values
 with an `(I)` appended e.g. `EMIS (I)`. The addition of `(I)` represents a GP
