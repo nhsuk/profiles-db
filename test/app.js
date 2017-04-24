@@ -108,5 +108,27 @@ describe('app', function () {
           });
       });
     });
+
+    describe('members with an online coded records access system', () => {
+      it('should have a valid supplier', () => {
+        mergedJson
+          .filter(unfiltered => unfiltered.onlineServices.codedRecords)
+          .forEach((item) => {
+            const supplier = item.onlineServices.codedRecords.supplier;
+            expectSupplierToBeValid(supplier);
+          });
+      });
+
+      it('should have a link for those suppliers with known links', () => {
+        mergedJson
+          .filter(unfiltered => unfiltered.onlineServices.codedRecords)
+          .filter(item =>
+            suppliersWithKnownLink.indexOf(item.onlineServices.codedRecords.supplier) > -1)
+          .forEach((filtered) => {
+            // eslint-disable-next-line no-unused-expressions
+            expect(filtered.onlineServices.repeatPrescriptions.url).to.not.be.undefined;
+          });
+      });
+    });
   });
 });

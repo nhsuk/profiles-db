@@ -116,7 +116,19 @@ optional. Optional members of `onlineServices` are:
 
 The `repeatPrescriptions` is an optional member of `onlineServices`. When
 present it will contain an object consisting of a `supplier` member and an
-optional `url` member.
+optional `url` member (see below for more information on `supplier`).
+
+#### Coded Records
+
+The `codedRecords` is an optional member of `onlineServices`. When
+present it will contain an object consisting of a `supplier` member and an
+optional `url` member (see below for more information on `supplier`).
+
+#### Appointments
+
+The `appointments` is an optional member of `onlineServices`. When
+present it will contain an object consisting of a `supplier` member and an
+optional `url` member (see below for more information on `supplier`).
 
 `supplier` is a string, representing the GP's supplier for the type of system
 the member represents e.g. repeat prescription ordering system.

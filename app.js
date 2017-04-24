@@ -10,12 +10,14 @@ function findByOdsCode(data, odsCode) {
   console.time(timerMsg);
 
   const bookingSystemData = fs.readFileSync('./input/booking.json');
+  const recordsSystemsData = fs.readFileSync('./input/records.json');
   const scriptData = fs.readFileSync('./input/scripts.json');
   const gpData = fs.readFileSync('./input/gp-data.json');
 
   const gps = JSON.parse(gpData);
   const bookingSystems = JSON.parse(bookingSystemData);
   const scriptSystems = JSON.parse(scriptData);
+  const recordsSystems = JSON.parse(recordsSystemsData);
 
   const merged = gps.map((gp) => {
     // eslint-disable-next-line no-param-reassign
@@ -32,6 +34,13 @@ function findByOdsCode(data, odsCode) {
       // eslint-disable-next-line no-param-reassign
       gp.onlineServices.repeatPrescriptions =
         onlineServices.getRepeatPrescriptionSystem(gp, matchedScriptSystem);
+    }
+
+    const matchedRecordsSystem = findByOdsCode(recordsSystems, gp.odsCode);
+    if (matchedRecordsSystem) {
+      // eslint-disable-next-line no-param-reassign
+      gp.onlineServices.codedRecords =
+        onlineServices.getCodedRecordsSystem(gp, matchedRecordsSystem);
     }
     return gp;
   });
