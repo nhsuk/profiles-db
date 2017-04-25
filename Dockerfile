@@ -19,4 +19,3 @@ RUN mongod --fork --logpath /var/log/mongodb.log --config /etc/mongodb.conf \
 VOLUME /data/db2
 
 CMD ["mongod", "--config", "/etc/mongodb.conf"]
-
