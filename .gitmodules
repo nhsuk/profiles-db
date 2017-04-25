@@ -1,3 +1,9 @@
 [submodule "ci-deployment"]
 	path = scripts/ci-deployment
 	url = https://github.com/nhsuk/ci-deployment.git
+[submodule "scripts/-f"]
+	path = scripts/-f
+	url = git@github.com:nhsuk/ci-deployment.git
+[submodule "scripts/ci-deployment"]
+	path = scripts/ci-deployment
+	url = https://github.com/nhsuk/ci-deployment.git
