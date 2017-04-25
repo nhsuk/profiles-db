@@ -4,15 +4,15 @@
   "description": "DB containing GP profile information",
   "main": "app.js",
   "scripts": {
-    "git-hooks": "npm run lint && npm run test",
+    "git-hooks": "yarn run lint && yarn run test",
     "lint": "eslint --ext .js,.json .",
     "lint-watch": "esw --watch .",
-    "precommit": "npm run git-hooks",
-    "prepush": "npm run snyk -- test",
+    "precommit": "yarn run git-hooks",
+    "prepush": "yarn run snyk -- test",
     "snyk": "snyk",
     "start": "node app.js",
     "test": "mocha --recursive test",
-    "test-watch": "npm run test -- --watch --reporter min"
+    "test-watch": "yarn run test -- --watch --reporter min"
   },
   "repository": {
     "type": "git",

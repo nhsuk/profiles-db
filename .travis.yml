@@ -8,7 +8,7 @@ services:
   - docker
 
 script:
-  - npm run git-hooks
+  - yarn run git-hooks
 
 after_success:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
