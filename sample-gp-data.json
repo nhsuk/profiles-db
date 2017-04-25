@@ -1,79 +1,62 @@
 {
-  "_id": 36584,
-  "choicesId": 36584,
-  "syndicationId": 14696,
-  "name": "Abbotsbury Road Practice",
-  "displayName": "Abbotsbury Road Practice",
-  "odsCode": "J81055",
+  "_id": 37985,
+  "choicesId": 37985,
+  "syndicationId": 4028,
+  "name": "Dr Goodwin-Jones R B & Partner",
+  "displayName": "Dr Goodwin-Jones R B & Partner",
+  "odsCode": "B83019",
   "address": {
     "addressLines": [
-      "24 Abbotsbury Road",
-      "Weymouth",
-      "Dorset",
-      "Weymouth"
+      "Grange Park Surgery",
+      "Grange Road",
+      "Burley-In-Wharfedale",
+      "Ilkley"
     ],
-    "postcode": "DT4 0AE"
+    "postcode": "LS29 7HG"
   },
   "location": {
     "type": "Point",
     "coordinates": [
-      -2.46197819709778,
-      50.6120300292969
+      -1.74809324741364,
+      53.9126968383789
     ]
   },
   "contact": {
-    "website": "http://www.abbotsburyroadsurgery.co.uk",
-    "telephone": "01305 780806",
-    "fax": "01305 762833",
-    "email": "carole.woodward@gp-J81055.nhs.uk"
+    "website": "http://www.grangeparksurgery.co.uk",
+    "telephone": "01943 862108",
+    "fax": "01943 864997"
   },
   "openingTimes": {
     "reception": {
       "sunday": [],
       "monday": [
         {
-          "opens": "07:30",
-          "closes": "18:30"
-        },
-        {
-          "opens": "18:30",
-          "closes": "20:00"
+          "opens": "08:00",
+          "closes": "18:00"
         }
       ],
       "tuesday": [
         {
           "opens": "07:30",
-          "closes": "18:30"
-        },
-        {
-          "opens": "18:30",
-          "closes": "20:00"
+          "closes": "18:00"
         }
       ],
       "wednesday": [
         {
-          "opens": "07:30",
-          "closes": "08:00"
-        },
-        {
-          "opens": "08:00",
-          "closes": "18:30"
+          "opens": "07:00",
+          "closes": "18:00"
         }
       ],
       "thursday": [
         {
-          "opens": "07:30",
-          "closes": "18:30"
-        },
-        {
-          "opens": "18:30",
-          "closes": "19:30"
+          "opens": "08:00",
+          "closes": "18:00"
         }
       ],
       "friday": [
         {
-          "opens": "08:00",
-          "closes": "18:30"
+          "opens": "07:00",
+          "closes": "18:00"
         }
       ],
       "saturday": []
@@ -82,71 +65,50 @@
       "sunday": [],
       "monday": [
         {
-          "opens": "07:30",
-          "closes": "18:30"
-        },
-        {
-          "opens": "18:30",
-          "closes": "20:00"
+          "opens": "08:00",
+          "closes": "18:00"
         }
       ],
       "tuesday": [
         {
           "opens": "07:30",
-          "closes": "18:30"
-        },
-        {
-          "opens": "18:30",
-          "closes": "20:00"
+          "closes": "18:00"
         }
       ],
       "wednesday": [
         {
-          "opens": "07:30",
-          "closes": "08:00"
-        },
-        {
-          "opens": "08:00",
-          "closes": "18:30"
+          "opens": "07:00",
+          "closes": "18:00"
         }
       ],
       "thursday": [
         {
-          "opens": "07:30",
-          "closes": "18:30"
-        },
-        {
-          "opens": "18:30",
-          "closes": "19:30"
+          "opens": "08:00",
+          "closes": "18:00"
         }
       ],
       "friday": [
         {
-          "opens": "08:00",
-          "closes": "18:30"
+          "opens": "07:00",
+          "closes": "18:00"
         }
       ],
       "saturday": []
-    },
-    "alterations": {
-      "2014-05-05": [],
-      "2014-05-26": [],
-      "2014-08-25": [],
-      "2014-12-25": [],
-      "2014-12-26": [],
-      "2015-01-01": []
     }
   },
   "gpCounts": {
     "male": 3,
-    "female": 2
+    "female": 5
   },
   "doctors": [
-    "Dr Peter John Hewett",
-    "Dr Hugh Stephen Priestley",
-    "Dr Christine Brown",
-    "Dr Andrew Ward",
-    "Dr Suzanne Lane"
+    "Dr Catherine Anne Lockhart",
+    "Dr Sarah Anna Louise Hattam",
+    "Dr Sara Khoshneviszadeh",
+    "Dr Lincoln John Jowett",
+    "Dr Stephen William Day",
+    "Dr Caroline Jane Rayment",
+    "Dr Roger Banwell Goodwin-Jones",
+    "Dr Alison Anne Holt"
   ],
   "acceptingNewPatients": true,
   "facilities": {
@@ -157,11 +119,11 @@
       },
       {
         "name": "Cycle parking",
-        "exists": "Yes"
+        "exists": "NotSpecified"
       },
       {
         "name": "Disabled parking",
-        "exists": "Yes"
+        "exists": "NotSpecified"
       }
     ],
     "accessibility": [
@@ -171,7 +133,7 @@
       },
       {
         "name": "Disabled parking",
-        "exists": "Yes"
+        "exists": "No"
       },
       {
         "name": "Disabled WC",
@@ -203,31 +165,31 @@
     "epsEnabled": true,
     "entries": [
       {
-        "title": "Asthma Clinic",
-        "code": "SRV0280",
-        "availabilityTimes": "",
-        "introduction": "",
-        "gpReferralRequired": false,
-        "deliverer": "Abbotsbury Road Practice"
-      },
-      {
         "title": "Learning disability health check",
         "code": "SRV0492",
         "availabilityTimes": "",
         "introduction": "",
         "gpReferralRequired": false,
-        "deliverer": "Abbotsbury Road Practice"
+        "deliverer": "Dr Goodwin-Jones R B & Partner"
       }
     ]
   },
   "onlineServices": {
+    "appointments": {
+      "supplier": "TPP",
+      "bookOnlineLink": "https://systmonline.tpp-uk.com/Login?PracticeId=B83019"
+    },
     "repeatPrescriptions": {
       "supplier": "TPP",
-      "url": "https://systmonline.tpp-uk.com/Login?PracticeId=J81055"
+      "url": "https://systmonline.tpp-uk.com/Login?PracticeId=B83019"
+    },
+    "codedRecords": {
+      "supplier": "TPP",
+      "url": "https://systmonline.tpp-uk.com/Login?PracticeId=B83019"
     }
   },
   "bookingSystem": {
     "supplier": "TPP",
-    "bookOnlineLink": "https://systmonline.tpp-uk.com/Login?PracticeId=J81055"
+    "bookOnlineLink": "https://systmonline.tpp-uk.com/Login?PracticeId=B83019"
   }
 }
