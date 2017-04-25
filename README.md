@@ -36,7 +36,8 @@ Currently there are 2 sources of data:
 
 The output from each process is added to `./input`. Executing `yarn start` will
 create a merged data set and save it in `./data` from where it will be loaded
-into the database.
+into the database. This happens during the CI build and the merged data set
+will be included in the generated docker image.
 
 ## Data structure
 
