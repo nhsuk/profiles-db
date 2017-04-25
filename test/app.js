@@ -67,9 +67,24 @@ describe('app', function () {
     });
 
     describe('members with a booking system', () => {
+      const filterBookingSystem = item => item.bookingSystem;
+
+      it('should have some results once the filter has been applied', () => {
+        const filteredSet = new Set();
+        const bookingItemsLength = JSON.parse(fs.readFileSync('./input/booking.json', 'utf8')).length;
+        const nintyPercentOfRawRecords = bookingItemsLength * 0.9;
+
+        mergedJson.filter(filterBookingSystem)
+        .forEach((item) => {
+          filteredSet.add(item.odsCode);
+        });
+
+        expect(filteredSet.size).is.at.least(nintyPercentOfRawRecords);
+      });
+
       it('should have a valid supplier', () => {
         mergedJson
-          .filter(unfiltered => unfiltered.bookingSystem)
+          .filter(filterBookingSystem)
           .forEach((item) => {
             const supplier = item.bookingSystem.supplier;
             expectSupplierToBeValid(supplier);
@@ -78,7 +93,7 @@ describe('app', function () {
 
       it('should have a bookOnlineLink for those suppliers with known links', () => {
         mergedJson
-          .filter(unfiltered => unfiltered.bookingSystem)
+          .filter(filterBookingSystem)
           .filter(item => suppliersWithKnownLink.indexOf(item.bookingSystem.supplier) > -1)
           .forEach((filtered) => {
             // eslint-disable-next-line no-unused-expressions
@@ -87,10 +102,61 @@ describe('app', function () {
       });
     });
 
+    describe('members with an online services booking system', () => {
+      const filterOnlineServicesAppointments = item => item.onlineServices.appointments;
+
+      it('should have some results once the filter has been applied', () => {
+        const filteredSet = new Set();
+        const bookingItemsLength = JSON.parse(fs.readFileSync('./input/booking.json', 'utf8')).length;
+        const nintyPercentOfRawRecords = bookingItemsLength * 0.9;
+
+        mergedJson.filter(filterOnlineServicesAppointments)
+        .forEach((item) => {
+          filteredSet.add(item.odsCode);
+        });
+
+        expect(filteredSet.size).is.at.least(nintyPercentOfRawRecords);
+      });
+
+      it('should have a valid supplier', () => {
+        mergedJson.filter(filterOnlineServicesAppointments)
+          .forEach((item) => {
+            const supplier = item.onlineServices.appointments.supplier;
+            expectSupplierToBeValid(supplier);
+          });
+      });
+
+      it('should have a bookOnlineLink for those suppliers with known links', () => {
+        mergedJson
+          .filter(filterOnlineServicesAppointments)
+          .filter(item =>
+            suppliersWithKnownLink.indexOf(item.onlineServices.appointments.supplier) > -1)
+          .forEach((filtered) => {
+            // eslint-disable-next-line no-unused-expressions
+            expect(filtered.bookingSystem.bookOnlineLink).to.not.be.undefined;
+          });
+      });
+    });
+
     describe('members with an online repeat prescription system', () => {
+      const filterScripts = item => item.onlineServices.repeatPrescriptions;
+
+      it('should have some results once the filter has been applied', () => {
+        const filteredSet = new Set();
+        const scriptItemsLength = JSON.parse(fs.readFileSync('./input/scripts.json', 'utf8')).length;
+        const nintyPercentOfRawRecords = scriptItemsLength * 0.9;
+
+        mergedJson.filter(filterScripts)
+        .forEach((item) => {
+          filteredSet.add(item.odsCode);
+        });
+
+        expect(filteredSet.size).is.at.least(nintyPercentOfRawRecords);
+      });
+
       it('should have a valid supplier', () => {
         mergedJson
-          .filter(unfiltered => unfiltered.onlineServices.repeatPrescriptions)
+          .filter(filterScripts)
           .forEach((item) => {
             const supplier = item.onlineServices.repeatPrescriptions.supplier;
             expectSupplierToBeValid(supplier);
@@ -99,7 +165,7 @@ describe('app', function () {
 
       it('should have a link for those suppliers with known links', () => {
         mergedJson
-          .filter(unfiltered => unfiltered.onlineServices.repeatPrescriptions)
+          .filter(filterScripts)
           .filter(item =>
             suppliersWithKnownLink.indexOf(item.onlineServices.repeatPrescriptions.supplier) > -1)
           .forEach((filtered) => {
@@ -110,9 +176,24 @@ describe('app', function () {
     });
 
     describe('members with an online coded records access system', () => {
+      const filterCodedRecords = item => item.onlineServices.codedRecords;
+
+      it('should have some results once the filter has been applied', () => {
+        const filteredSet = new Set();
+        const codedRecordsLength = JSON.parse(fs.readFileSync('./input/records.json', 'utf8')).length;
+
+        mergedJson.filter(filterCodedRecords)
+        .forEach((item) => {
+          filteredSet.add(item.odsCode);
+        });
+        const nintyPercentOfRawRecords = codedRecordsLength * 0.9;
+
+        expect(filteredSet.size).is.at.least(nintyPercentOfRawRecords);
+      });
+
       it('should have a valid supplier', () => {
         mergedJson
-          .filter(unfiltered => unfiltered.onlineServices.codedRecords)
+          .filter(filterCodedRecords)
           .forEach((item) => {
             const supplier = item.onlineServices.codedRecords.supplier;
             expectSupplierToBeValid(supplier);
@@ -121,7 +202,7 @@ describe('app', function () {
 
       it('should have a link for those suppliers with known links', () => {
         mergedJson
-          .filter(unfiltered => unfiltered.onlineServices.codedRecords)
+          .filter(filterCodedRecords)
           .filter(item =>
             suppliersWithKnownLink.indexOf(item.onlineServices.codedRecords.supplier) > -1)
           .forEach((filtered) => {
