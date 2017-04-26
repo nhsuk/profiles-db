@@ -7,4 +7,3 @@ services:
       context: .
     ports:
       - 27017:27017
-
