@@ -1,4 +1,6 @@
 const fs = require('fs');
+const prettyHrtime = require('pretty-hrtime');
+const log = require('./lib/logger');
 const onlineServices = require('./lib/onlineServices');
 const constants = require('./lib/constants');
 
@@ -16,8 +18,7 @@ function saveFile(mergedData) {
 }
 
 (function app() {
-  const timerMsg = 'Merging POMI data took';
-  console.time(timerMsg);
+  const startTime = process.hrtime();
 
   const merged = gps.map((gp) => {
     /* eslint-disable no-param-reassign */
@@ -31,5 +32,6 @@ function saveFile(mergedData) {
   });
 
   saveFile(merged);
-  console.timeEnd(timerMsg);
+  const endTime = process.hrtime(startTime);
+  log.info(`Merging GP data sets took: ${prettyHrtime(endTime)}`);
 }());
