@@ -44,7 +44,7 @@ describe('systems', () => {
         // eslint-disable-next-line no-unused-expressions
         expect(system).to.not.be.undefined;
         expect(system.url)
-          .to.be.equal('https://patient.emisaccess.co.uk/appointments/available');
+          .to.be.equal('https://patient.emisaccess.co.uk/medical-record');
       });
 
       it('should return the suppliers system address for INPS', () => {
