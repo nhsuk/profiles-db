@@ -1,38 +1,23 @@
 const fs = require('fs');
 const onlineServices = require('./lib/onlineServices');
 
-function findByOdsCode(data, odsCode) {
-  return data.find(item => item.GPPracticeCode === odsCode);
-}
+const gps = require('./input/gp-data.json');
+const bookingSystems = require('./input/booking.json');
+const scriptSystems = require('./input/scripts.json');
+const recordsSystems = require('./input/records.json');
 
 (function app() {
   const timerMsg = 'Merging POMI data took';
   console.time(timerMsg);
 
-  const bookingSystemData = fs.readFileSync('./input/booking.json');
-  const scriptData = fs.readFileSync('./input/scripts.json');
-  const gpData = fs.readFileSync('./input/gp-data.json');
-
-  const gps = JSON.parse(gpData);
-  const bookingSystems = JSON.parse(bookingSystemData);
-  const scriptSystems = JSON.parse(scriptData);
-
   const merged = gps.map((gp) => {
-    // eslint-disable-next-line no-param-reassign
+    /* eslint-disable no-param-reassign */
     gp.onlineServices = {};
+    onlineServices.add({ systemList: bookingSystems, gp, key: 'appointments' });
+    onlineServices.add({ systemList: scriptSystems, gp, key: 'repeatPrescriptions' });
+    onlineServices.add({ systemList: recordsSystems, gp, key: 'codedRecords' });
+    /* eslint-enable no-param-reassign */
 
-    const matchedBookingSystem = findByOdsCode(bookingSystems, gp.odsCode);
-    if (matchedBookingSystem) {
-      // eslint-disable-next-line no-param-reassign
-      gp.bookingSystem = onlineServices.getBookingSystem(gp, matchedBookingSystem);
-    }
-
-    const matchedScriptSystem = findByOdsCode(scriptSystems, gp.odsCode);
-    if (matchedScriptSystem) {
-      // eslint-disable-next-line no-param-reassign
-      gp.onlineServices.repeatPrescriptions =
-        onlineServices.getRepeatPrescriptionSystem(gp, matchedScriptSystem);
-    }
     return gp;
   });
 

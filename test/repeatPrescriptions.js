@@ -1,9 +1,9 @@
 const chai = require('chai');
-const onlineServices = require('../lib/onlineServices');
+const systems = require('../lib/systems');
 
 const expect = chai.expect;
 
-describe('onlineServices', () => {
+describe('systems', () => {
   describe('getRepeatPrescriptionSystem', () => {
     const odsCode = 'A12345';
     const gpWebsite = 'http://gp.website.com';
@@ -26,7 +26,7 @@ describe('onlineServices', () => {
         gpData.contact = { website: gpWebsite };
         const systemData = getBaseOnlineSystemData();
 
-        const system = onlineServices.getRepeatPrescriptionSystem(gpData, systemData);
+        const system = systems.getRepeatPrescriptionSystem(gpData, systemData);
 
         // eslint-disable-next-line no-unused-expressions
         expect(system).to.not.be.undefined;
@@ -39,7 +39,7 @@ describe('onlineServices', () => {
         const gpData = getBaseGpData();
         const systemData = getBaseOnlineSystemData('EMIS');
 
-        const system = onlineServices.getRepeatPrescriptionSystem(gpData, systemData);
+        const system = systems.getRepeatPrescriptionSystem(gpData, systemData);
 
         // eslint-disable-next-line no-unused-expressions
         expect(system).to.not.be.undefined;
@@ -51,7 +51,7 @@ describe('onlineServices', () => {
         const gpData = getBaseGpData();
         const systemData = getBaseOnlineSystemData('INPS');
 
-        const system = onlineServices.getRepeatPrescriptionSystem(gpData, systemData);
+        const system = systems.getRepeatPrescriptionSystem(gpData, systemData);
 
         // eslint-disable-next-line no-unused-expressions
         expect(system).to.not.be.undefined;
@@ -63,7 +63,7 @@ describe('onlineServices', () => {
         const gpData = getBaseGpData();
         const systemData = getBaseOnlineSystemData('Informatica');
 
-        const system = onlineServices.getRepeatPrescriptionSystem(gpData, systemData);
+        const system = systems.getRepeatPrescriptionSystem(gpData, systemData);
 
         // eslint-disable-next-line no-unused-expressions
         expect(system).to.not.be.undefined;
@@ -75,7 +75,7 @@ describe('onlineServices', () => {
         const gpData = getBaseGpData();
         const systemData = getBaseOnlineSystemData('Microtest');
 
-        const system = onlineServices.getRepeatPrescriptionSystem(gpData, systemData);
+        const system = systems.getRepeatPrescriptionSystem(gpData, systemData);
 
         // eslint-disable-next-line no-unused-expressions
         expect(system).to.not.be.undefined;
@@ -88,7 +88,7 @@ describe('onlineServices', () => {
         gpData.contact = { website: gpWebsite };
         const systemData = getBaseOnlineSystemData('NK');
 
-        const system = onlineServices.getRepeatPrescriptionSystem(gpData, systemData);
+        const system = systems.getRepeatPrescriptionSystem(gpData, systemData);
 
         // eslint-disable-next-line no-unused-expressions
         expect(system).to.not.be.undefined;
@@ -99,7 +99,7 @@ describe('onlineServices', () => {
         const gpData = getBaseGpData();
         const systemData = getBaseOnlineSystemData('NK');
 
-        const system = onlineServices.getRepeatPrescriptionSystem(gpData, systemData);
+        const system = systems.getRepeatPrescriptionSystem(gpData, systemData);
 
         // eslint-disable-next-line no-unused-expressions
         expect(system).to.not.be.undefined;
@@ -111,7 +111,7 @@ describe('onlineServices', () => {
         const gpData = getBaseGpData();
         const systemData = getBaseOnlineSystemData('TPP');
 
-        const system = onlineServices.getRepeatPrescriptionSystem(gpData, systemData);
+        const system = systems.getRepeatPrescriptionSystem(gpData, systemData);
 
         // eslint-disable-next-line no-unused-expressions
         expect(system).to.not.be.undefined;
@@ -126,7 +126,7 @@ describe('onlineServices', () => {
         const gpData = getBaseGpData();
         const systemData = getBaseOnlineSystemData('EMIS (I)');
 
-        const system = onlineServices.getRepeatPrescriptionSystem(gpData, systemData);
+        const system = systems.getRepeatPrescriptionSystem(gpData, systemData);
 
         // eslint-disable-next-line no-unused-expressions
         expect(system).to.not.be.undefined;
@@ -139,7 +139,7 @@ describe('onlineServices', () => {
         gpData.contact = { website: gpWebsite };
         const systemData = getBaseOnlineSystemData('NEW SYSTEM (I)');
 
-        const system = onlineServices.getRepeatPrescriptionSystem(gpData, systemData);
+        const system = systems.getRepeatPrescriptionSystem(gpData, systemData);
 
         // eslint-disable-next-line no-unused-expressions
         expect(system).to.not.be.undefined;

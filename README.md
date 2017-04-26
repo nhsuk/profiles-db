@@ -107,6 +107,8 @@ be an empty array.
 The `acceptingNewPatients` member is always present and will contain `true` or
 `false`.
 
+---
+
 ### Online Services
 
 The `onlineServices` member is always present, however, the contents of it are
@@ -114,9 +116,23 @@ optional. Optional members of `onlineServices` are:
 
 #### Repeat Prescriptions
 
-The `repeatPrescriptions` is an optional member of `onlineServices`. When
+`repeatPrescriptions` is an optional member of `onlineServices`. When
 present it will contain an object consisting of a `supplier` member and an
-optional `url` member.
+optional `url` member (see below for more information on `supplier`).
+
+#### Coded Records
+
+`codedRecords` is an optional member of `onlineServices`. When
+present it will contain an object consisting of a `supplier` member and an
+optional `url` member (see below for more information on `supplier`).
+
+#### Appointments
+
+`appointments` is an optional member of `onlineServices`. When
+present it will contain an object consisting of a `supplier` member and an
+optional `url` member (see below for more information on `supplier`).
+
+##### Supplier
 
 `supplier` is a string, representing the GP's supplier for the type of system
 the member represents e.g. repeat prescription ordering system.
@@ -129,19 +145,14 @@ accessing that GP's online system. It will be a direct link to the system or
 the GP's website if the system is unknown. And no value is the GP's
 website is unknown.
 
+---
+
 ### Booking system
 
-The `bookingSystem` member is optional. When present it will contain an object
-consisting of a `supplier` member and an optional `bookOnlineLink` member.
-`supplier` is a string, representing the GP's booking system supplier. The
-value will be one of the suppliers listed below
-`["EMIS","INPS","Informatica","Microtest","NK","TPP"]`. Or one of these values
-with an `(I)` appended e.g. `EMIS (I)`. The addition of `(I)` represents a GP
-that is now using the Informatica system.
-`bookOnlineLink` is a string representing the best link we know about to use for
-accessing that GP's online booking system. It will be the link to the booking
-system or the GP's website if the system is unknown. And no value is the GP's
-website is unknown.
+The `bookingSystem` member is optional. It is a duplicate of
+`onlineServices.appointments` member. This is support backwards compatibility
+for consumers until they have been updated to use the `appointments` member
+in `onlineServices`.
 
 ### Facilities
 
