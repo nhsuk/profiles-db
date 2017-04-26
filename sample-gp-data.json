@@ -177,7 +177,7 @@
   "onlineServices": {
     "appointments": {
       "supplier": "TPP",
-      "bookOnlineLink": "https://systmonline.tpp-uk.com/Login?PracticeId=B83019"
+      "url": "https://systmonline.tpp-uk.com/Login?PracticeId=B83019"
     },
     "repeatPrescriptions": {
       "supplier": "TPP",
@@ -187,9 +187,5 @@
       "supplier": "TPP",
       "url": "https://systmonline.tpp-uk.com/Login?PracticeId=B83019"
     }
-  },
-  "bookingSystem": {
-    "supplier": "TPP",
-    "bookOnlineLink": "https://systmonline.tpp-uk.com/Login?PracticeId=B83019"
   }
 }

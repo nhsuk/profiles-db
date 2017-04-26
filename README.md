@@ -148,13 +148,6 @@ website is unknown.
 
 ---
 
-### Booking system
-
-The `bookingSystem` member is optional. It is a duplicate of
-`onlineServices.appointments` member. This is support backwards compatibility
-for consumers until they have been updated to use the `appointments` member
-in `onlineServices`.
-
 ### Facilities
 
 The `facilities` member may contain `parking` or `accessibility` members. Each
