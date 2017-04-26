@@ -99,7 +99,7 @@ describe('app', function () {
             suppliersWithKnownLink.indexOf(item.onlineServices.appointments.supplier) > -1)
           .forEach((filtered) => {
             // eslint-disable-next-line no-unused-expressions
-            expect(filtered.bookingSystem.bookOnlineLink).to.not.be.undefined;
+            expect(filtered.onlineServices.appointments.url).to.not.be.undefined;
           });
       });
     });
