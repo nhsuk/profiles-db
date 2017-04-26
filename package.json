@@ -37,5 +37,9 @@
     "husky": "^0.13.2",
     "mocha": "^3.2.0",
     "snyk": "^1.25.2"
+  },
+  "dependencies": {
+    "nhsuk-bunyan-logger": "github:nhsuk/bunyan-logger#1.1.1",
+    "pretty-hrtime": "^1.0.3"
   }
 }
