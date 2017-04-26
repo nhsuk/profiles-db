@@ -30,7 +30,7 @@ describe('systems', () => {
 
         // eslint-disable-next-line no-unused-expressions
         expect(bookingSystem).to.not.be.undefined;
-        expect(bookingSystem.bookOnlineLink).to.be.equal(gpWebsite);
+        expect(bookingSystem.url).to.be.equal(gpWebsite);
       });
     });
 
@@ -43,7 +43,7 @@ describe('systems', () => {
 
         // eslint-disable-next-line no-unused-expressions
         expect(bookingSystem).to.not.be.undefined;
-        expect(bookingSystem.bookOnlineLink)
+        expect(bookingSystem.url)
           .to.be.equal('https://patient.emisaccess.co.uk/appointments/available');
       });
 
@@ -55,7 +55,7 @@ describe('systems', () => {
 
         // eslint-disable-next-line no-unused-expressions
         expect(bookingSystem).to.not.be.undefined;
-        expect(bookingSystem.bookOnlineLink)
+        expect(bookingSystem.url)
           .to.be.equal('https://www.patient-services.co.uk/web/ps/login');
       });
 
@@ -67,7 +67,7 @@ describe('systems', () => {
 
         // eslint-disable-next-line no-unused-expressions
         expect(bookingSystem).to.not.be.undefined;
-        expect(bookingSystem.bookOnlineLink)
+        expect(bookingSystem.url)
           .to.be.equal('https://www.patient-services.co.uk/web/ps/login');
       });
 
@@ -79,7 +79,7 @@ describe('systems', () => {
 
         // eslint-disable-next-line no-unused-expressions
         expect(bookingSystem).to.not.be.undefined;
-        expect(bookingSystem.bookOnlineLink)
+        expect(bookingSystem.url)
           .to.be.equal('https://www.thewaiting-room.net/');
       });
 
@@ -92,7 +92,7 @@ describe('systems', () => {
 
         // eslint-disable-next-line no-unused-expressions
         expect(bookingSystem).to.not.be.undefined;
-        expect(bookingSystem.bookOnlineLink).to.be.equal(gpWebsite);
+        expect(bookingSystem.url).to.be.equal(gpWebsite);
       });
 
       it('should return undefined when no GP website is available for NK', () => {
@@ -104,7 +104,7 @@ describe('systems', () => {
         // eslint-disable-next-line no-unused-expressions
         expect(bookingSystem).to.not.be.undefined;
         // eslint-disable-next-line no-unused-expressions
-        expect(bookingSystem.bookOnlineLink).to.be.undefined;
+        expect(bookingSystem.url).to.be.undefined;
       });
 
       it('should return the suppliers system address for TPP', () => {
@@ -115,7 +115,7 @@ describe('systems', () => {
 
         // eslint-disable-next-line no-unused-expressions
         expect(bookingSystem).to.not.be.undefined;
-        expect(bookingSystem.bookOnlineLink)
+        expect(bookingSystem.url)
           .to.be
           .equal(`https://systmonline.tpp-uk.com/Login?PracticeId=${odsCode}`);
       });
@@ -131,7 +131,7 @@ describe('systems', () => {
         // eslint-disable-next-line no-unused-expressions
         expect(bookingSystem).to.not.be.undefined;
         // eslint-disable-next-line no-unused-expressions
-        expect(bookingSystem.bookOnlineLink).to.be.undefined;
+        expect(bookingSystem.url).to.be.undefined;
       });
 
       it('should return the GPs website address for a booking system that ends in (I)', () => {
@@ -143,7 +143,7 @@ describe('systems', () => {
 
         // eslint-disable-next-line no-unused-expressions
         expect(bookingSystem).to.not.be.undefined;
-        expect(bookingSystem.bookOnlineLink).to.be.equal(gpWebsite);
+        expect(bookingSystem.url).to.be.equal(gpWebsite);
       });
     });
   });

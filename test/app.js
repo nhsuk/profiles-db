@@ -68,42 +68,6 @@ describe('app', function () {
       });
     });
 
-    describe('members with a booking system', () => {
-      const filterBookingSystem = item => item.bookingSystem;
-
-      it('should have some results once the filter has been applied', () => {
-        const filteredSet = new Set();
-        const bookingItemsLength = JSON.parse(fs.readFileSync('./input/booking.json', 'utf8')).length;
-        const nintyPercentOfRawRecords = bookingItemsLength * 0.9;
-
-        mergedJson.filter(filterBookingSystem)
-        .forEach((item) => {
-          filteredSet.add(item.odsCode);
-        });
-
-        expect(filteredSet.size).is.at.least(nintyPercentOfRawRecords);
-      });
-
-      it('should have a valid supplier', () => {
-        mergedJson
-          .filter(filterBookingSystem)
-          .forEach((item) => {
-            const supplier = item.bookingSystem.supplier;
-            expectSupplierToBeValid(supplier);
-          });
-      });
-
-      it('should have a bookOnlineLink for those suppliers with known links', () => {
-        mergedJson
-          .filter(filterBookingSystem)
-          .filter(item => suppliersWithKnownLink.indexOf(item.bookingSystem.supplier) > -1)
-          .forEach((filtered) => {
-            // eslint-disable-next-line no-unused-expressions
-            expect(filtered.bookingSystem.bookOnlineLink).to.not.be.undefined;
-          });
-      });
-    });
-
     describe('members with an online services booking system', () => {
       const filterOnlineServicesAppointments = item => item.onlineServices.appointments;
 
