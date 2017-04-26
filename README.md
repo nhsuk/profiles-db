@@ -34,7 +34,7 @@ Currently there are 2 sources of data:
 * Patient Online Management Information (POMI) data from NHSDigital's indicator
   portal. Handled by [pomi-data-etl](https://github.com/nhsuk/pomi-data-etl)
 
-The output from each process is added to `./input`. Executing `npm start` will
+The output from each process is added to `./input`. Executing `yarn start` will
 create a merged data set and save it in `./data` from where it will be loaded
 into the database.
 

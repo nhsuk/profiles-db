@@ -1,0 +1,5 @@
+#!/bin/bash
+docker-compose down -v
+# run the data merge
+yarn run start
+docker-compose up --build --force-recreate profiles-db
