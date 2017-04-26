@@ -9,6 +9,7 @@ services:
 
 script:
   - yarn run git-hooks
+  - yarn run start
 
 after_success:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"

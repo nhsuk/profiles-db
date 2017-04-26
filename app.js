@@ -1,10 +1,19 @@
 const fs = require('fs');
 const onlineServices = require('./lib/onlineServices');
+const constants = require('./lib/constants');
 
 const gps = require('./input/gp-data.json');
 const bookingSystems = require('./input/booking.json');
 const scriptSystems = require('./input/scripts.json');
 const recordsSystems = require('./input/records.json');
+
+function saveFile(mergedData) {
+  const outputDir = constants.OUTPUT_DIR;
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir);
+  }
+  fs.writeFileSync(`${outputDir}/gp-data-merged.json`, JSON.stringify(mergedData), 'utf8');
+}
 
 (function app() {
   const timerMsg = 'Merging POMI data took';
@@ -21,7 +30,6 @@ const recordsSystems = require('./input/records.json');
     return gp;
   });
 
-  fs.writeFileSync('./data/gp-data-merged.json', JSON.stringify(merged), 'utf8');
-
+  saveFile(merged);
   console.timeEnd(timerMsg);
 }());

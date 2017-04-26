@@ -1,5 +1,7 @@
 const fs = require('fs');
 const chai = require('chai');
+const constants = require('../lib/constants');
+
 require('../app');
 
 const expect = chai.expect;
@@ -28,8 +30,8 @@ describe('app', function () {
   let mergedData;
 
   before('load the files and convert to JSON', () => {
-    const gpData = fs.readFileSync('./input/gp-data.json', 'utf8');
-    mergedData = fs.readFileSync('./data/gp-data-merged.json', 'utf8');
+    const gpData = fs.readFileSync(`${constants.INPUT_DIR}/gp-data.json`, 'utf8');
+    mergedData = fs.readFileSync(`${constants.OUTPUT_DIR}/gp-data-merged.json`, 'utf8');
 
     gpJson = JSON.parse(gpData);
     mergedJson = JSON.parse(mergedData);
