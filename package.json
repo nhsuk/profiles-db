@@ -10,6 +10,7 @@
     "precommit": "yarn run git-hooks",
     "prepush": "yarn run snyk -- test",
     "snyk": "snyk",
+    "snyk-travis": "yarn run snyk -- test --org=nhsuk && yarn run snyk -- monitor --org=nhsuk",
     "start": "node app.js",
     "test": "mocha --recursive test",
     "test-watch": "yarn run test -- --watch --reporter min"
@@ -39,7 +40,7 @@
     "snyk": "^1.25.2"
   },
   "dependencies": {
-    "nhsuk-bunyan-logger": "github:nhsuk/bunyan-logger#1.1.1",
+    "nhsuk-bunyan-logger": "^1.2.3",
     "pretty-hrtime": "^1.0.3"
   }
 }
