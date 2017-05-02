@@ -24,7 +24,7 @@ function expectSupplierToBeValid(supplier) {
 }
 
 describe('app', function () {
-  this.timeout(3000);
+  this.timeout(6000);
   let gpJson;
   let mergedJson;
   let mergedData;

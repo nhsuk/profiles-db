@@ -7,10 +7,11 @@ sudo: required
 services:
   - docker
 
+before_script:
+  - yarn run travis
+
 script:
-  - yarn run git-hooks
   - yarn run start
-  - yarn run snyk-travis
 
 after_success:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"

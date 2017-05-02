@@ -4,16 +4,20 @@
   "description": "DB containing GP profile information",
   "main": "app.js",
   "scripts": {
-    "git-hooks": "yarn run lint && yarn run test",
+    "check-coverage": "istanbul check-coverage --config .istanbul.yml",
+    "generate-coverage": "yarn run istanbul -- cover _mocha -- --recursive",
+    "git-hook": "yarn run lint && yarn run generate-coverage && yarn run check-coverage",
+    "istanbul": "NODE_ENV=test istanbul",
     "lint": "eslint --ext .js,.json .",
     "lint-watch": "esw --watch .",
-    "precommit": "yarn run git-hooks",
+    "precommit": "yarn run git-hook",
     "prepush": "yarn run snyk -- test",
-    "snyk": "snyk",
     "snyk-travis": "yarn run snyk -- test --org=nhsuk && yarn run snyk -- monitor --org=nhsuk",
     "start": "node app.js",
-    "test": "mocha --recursive test",
-    "test-watch": "yarn run test -- --watch --reporter min"
+    "test": "NODE_ENV=test mocha --recursive test",
+    "test-watch": "yarn run test -- --watch --reporter min",
+    "travis": "yarn run git-hook && yarn upload-coverage && yarn run snyk-travis",
+    "upload-coverage": "cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",
@@ -27,6 +31,7 @@
   "homepage": "https://github.com/nhsuk/profiles-db#readme",
   "devDependencies": {
     "chai": "^3.5.0",
+    "coveralls": "^2.13.1",
     "eslint": "^3.17.1",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
@@ -36,6 +41,7 @@
     "eslint-plugin-react": "^6.10.0",
     "eslint-watch": "^3.0.1",
     "husky": "^0.13.2",
+    "istanbul": "^0.4.5",
     "mocha": "^3.2.0",
     "snyk": "^1.25.2"
   },
