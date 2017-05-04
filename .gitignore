@@ -4,4 +4,3 @@ coverage/
 npm-debug.log
 npm-debug.log*
 data/gp-data-merged.json
-.idea/*
