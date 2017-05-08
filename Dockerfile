@@ -10,8 +10,9 @@ COPY etc/ /etc/
 RUN mongod --fork --logpath /var/log/mongodb.log --config /etc/mongodb.conf \
     && mongoimport --jsonArray -d profiles -c gps --file /temp/gp-data-merged.json \
     # Populate the searchWords field with words from the address and name with duplicates and punctuation removed
-    && mongo profiles --eval "db.gps.find().snapshot().forEach(function (gp) { gp.searchWords = gp.address.addressLines.concat([gp.address.postcode, gp.name]).join(' ').toLowerCase().replace(/[^\w\s]/g,'').replace(/\s+/g,' ').split(' ').filter(function(item, pos, self) { return self.indexOf(item) == pos; }).join(' '); db.gps.save(gp);} )" \
-    && mongo profiles --eval "db.gps.createIndex({ 'name': 'text', 'doctors': 'text', 'searchWords': 'text'}, { weights: { name: 5, doctors: 5, searchWords: 10 } }, {name: 'SearchIndex'})" \
+    && mongo profiles --eval "db.gps.find().snapshot().forEach(function (gp) { gp.searchSurgery = gp.address.addressLines.concat([gp.address.postcode]).join(' ').toLowerCase().replace(/[^\w\s]/g,'').replace(/\s+/g,' ').split(' ').filter(function(item, pos, self) { return self.indexOf(item) == pos; }).join(' '); db.gps.save(gp);} )" \
+    && mongo profiles --eval "db.gps.find().snapshot().forEach(function (gp) { gp.searchDoctors = gp.doctors.join(' ').toLowerCase().replace(/[^\w\s]/g,'').replace(/\s+/g,' ').split(' ').filter(function(item, pos, self) { return self.indexOf(item) == pos; }).join(' '); db.gps.save(gp);} )" \
+    && mongo profiles --eval "db.gps.createIndex({ 'name': 'text', 'searchDoctors': 'text', 'searchSurgeries': 'text'}, {name: 'SearchIndex'})" \
     && mongod --config /etc/mongodb.conf --shutdown \
     && chown -R mongodb /data/db2
 
