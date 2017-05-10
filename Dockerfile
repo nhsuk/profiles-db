@@ -10,8 +10,8 @@ COPY etc/ /etc/
 RUN mongod --fork --logpath /var/log/mongodb.log --config /etc/mongodb.conf \
     && mongoimport --jsonArray -d profiles -c gps --file /temp/gp-data-merged.json \
     # Populate the searchWords field with words from the address and name with duplicates and punctuation removed
-    && mongo profiles --eval "db.gps.find().snapshot().forEach(function (gp) { gp.searchSurgery = gp.address.addressLines.concat([gp.name, gp.address.postcode]).join(' ').toLowerCase().replace(/[^\w\s]/g,'').replace(/\s+/g,' ').split(' ').filter(function(item, pos, self) { return self.indexOf(item) == pos; }).join(' '); db.gps.save(gp);} )" \
-    && mongo profiles --eval "db.gps.find().snapshot().forEach(function (gp) { gp.searchDoctors = gp.doctors.join(' ').toLowerCase().replace(/[^\w\s]/g,'').replace(/\s+/g,' ').split(' ').filter(function(item, pos, self) { return self.indexOf(item) == pos; }).join(' '); db.gps.save(gp);} )" \
+    && mongo profiles --eval "db.gps.find().snapshot().forEach(function (gp) { gp.searchSurgery = gp.address.addressLines.concat([gp.name, gp.address.postcode]).join(' ').toLowerCase().replace(/[^\w\s]/g,'').replace(/\s+/g,' ').split(' ').filter(function(item, pos, self) { return self.indexOf(item) == pos; }).filter(function(item, pos, self) { return ! /(dr|DR|Dr|Doctor|doctor|dr|DR.|Dr.)/.test(item); }).join(' '); db.gps.save(gp);} )" \
+    && mongo profiles --eval "db.gps.find().snapshot().forEach(function (gp) { gp.searchDoctors = gp.doctors.join(' ').toLowerCase().replace(/[^\w\s]/g,'').replace(/\s+/g,' ').split(' ').filter(function(item, pos, self) { return self.indexOf(item) == pos; }).filter(function(item, pos, self) { return ! /(dr|DR|Dr|Doctor|doctor|dr|DR.|Dr.)/.test(item); }).join(' '); db.gps.save(gp);} )" \
     && mongo profiles --eval "db.gps.createIndex({ 'name': 'text', 'searchSurgery': 'text', 'searchDoctors': 'text'}, { weights: {'name': 1, 'searchSurgery': 2, 'searchDoctors': 1}, 'default_language': 'none', 'name': 'SearchIndex'})" \
     && mongod --config /etc/mongodb.conf --shutdown \
     && chown -R mongodb /data/db2
