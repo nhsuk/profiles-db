@@ -1,9 +1,8 @@
 /* eslint-disable */
 /* Since mongo does not support ES6 we can not lint with our current eslint config */
 
-
 String.prototype.removePunctuation = function () {
-    return this.replace(/[^\w\s]/g,'');
+    return this.replace(/[.,]/g,'');
 };
 
 String.prototype.removeStopWords = function () {
