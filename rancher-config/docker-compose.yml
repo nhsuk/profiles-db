@@ -1,0 +1,9 @@
+version: '2'
+
+services:
+
+  profiles-db:
+    image: "nhsuk/profiles-db:${DOCKER_IMAGE_TAG}"
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.scheduler.affinity:host_label_soft: c2s=true
