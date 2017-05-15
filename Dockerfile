@@ -5,7 +5,7 @@ RUN mkdir -p /data/db2 \
     && chown -R mongodb:mongodb /data/db2
 
 COPY data/ /temp/
-COPY scripts/populate-search-fields.js /temp/
+COPY pre-processor-scripts/populate-search-fields.js /temp/
 COPY etc/ /etc/
 
 RUN mongod --fork --logpath /var/log/mongodb.log --config /etc/mongodb.conf \
