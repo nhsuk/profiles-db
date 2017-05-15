@@ -6,7 +6,7 @@ String.prototype.removePunctuation = function () {
 };
 
 String.prototype.removeStopWords = function () {
-    return this.replace(/(dr|doctor|drs)/ig,'');
+    return this.replace(/\b(drs?|doctors?)\b/ig,'');
 };
 
 String.prototype.removeDuplicates = function () {
