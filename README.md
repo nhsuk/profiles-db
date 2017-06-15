@@ -178,3 +178,10 @@ All other members will be present and populated.
 * List suppliers: `jq -c 'unique_by(.Supplier) | [.[].Supplier]' input/pomi.json`
 * Find single item by `odsCode`:
   `jq '.[] | select(.odsCode == "${odsCode}")' data/gp-data-merged.json`
+
+## Architecture Decision Records
+
+This repo uses
+[Architecture Decision Records](http://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions)
+to record architectural decisions for this project.
+They are stored in [doc/architecture/decisions](doc/architecture/decisions).
