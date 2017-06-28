@@ -30,23 +30,23 @@
   },
   "homepage": "https://github.com/nhsuk/profiles-db#readme",
   "devDependencies": {
-    "chai": "^3.5.0",
+    "chai": "^4.0.2",
     "coveralls": "^2.13.1",
     "eslint": "^3.17.1",
-    "eslint-config-airbnb": "^14.1.0",
-    "eslint-plugin-import": "^2.2.0",
+    "eslint-config-airbnb": "^15.0.1",
+    "eslint-plugin-import": "^2.6.0",
     "eslint-plugin-json": "^1.2.0",
-    "eslint-plugin-jsx-a11y": "^4.0.0",
-    "eslint-plugin-mocha": "^4.8.0",
-    "eslint-plugin-react": "^6.10.0",
-    "eslint-watch": "^3.0.1",
-    "husky": "^0.13.2",
+    "eslint-plugin-jsx-a11y": "^5.1.0",
+    "eslint-plugin-mocha": "^4.11.0",
+    "eslint-plugin-react": "^7.1.0",
+    "eslint-watch": "^3.1.2",
+    "husky": "^0.14.1",
     "istanbul": "^0.4.5",
-    "mocha": "^3.2.0",
-    "snyk": "^1.25.2"
+    "mocha": "^3.4.2",
+    "snyk": "^1.36.2"
   },
   "dependencies": {
-    "nhsuk-bunyan-logger": "^1.2.3",
+    "nhsuk-bunyan-logger": "^1.4.0",
     "pretty-hrtime": "^1.0.3"
   }
 }
