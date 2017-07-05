@@ -1,15 +1,16 @@
 language: node_js
-node_js:
-  - node
+node_js: node
+cache: yarn
+services: docker
 
-services:
-  - docker
+before_install: yarn global add greenkeeper-lockfile@1
 
 before_script:
   - yarn run travis
+  - greenkeeper-lockfile-update
 
-script:
-  - yarn run start
+script: yarn run start
 
-after_success:
-  - bash ./scripts/ci-deployment/deploy.sh
+after_script: greenkeeper-lockfile-upload
+
+after_success: bash ./scripts/ci-deployment/deploy.sh

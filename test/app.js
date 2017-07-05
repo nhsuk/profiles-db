@@ -77,9 +77,9 @@ describe('app', function () {
         const nintyPercentOfRawRecords = bookingItemsLength * 0.9;
 
         mergedJson.filter(filterOnlineServicesAppointments)
-        .forEach((item) => {
-          filteredSet.add(item.odsCode);
-        });
+          .forEach((item) => {
+            filteredSet.add(item.odsCode);
+          });
 
         expect(filteredSet.size).is.at.least(nintyPercentOfRawRecords);
       });
@@ -113,9 +113,9 @@ describe('app', function () {
         const nintyPercentOfRawRecords = scriptItemsLength * 0.9;
 
         mergedJson.filter(filterScripts)
-        .forEach((item) => {
-          filteredSet.add(item.odsCode);
-        });
+          .forEach((item) => {
+            filteredSet.add(item.odsCode);
+          });
 
         expect(filteredSet.size).is.at.least(nintyPercentOfRawRecords);
       });
@@ -149,9 +149,9 @@ describe('app', function () {
         const codedRecordsLength = JSON.parse(fs.readFileSync('./input/records.json', 'utf8')).length;
 
         mergedJson.filter(filterCodedRecords)
-        .forEach((item) => {
-          filteredSet.add(item.odsCode);
-        });
+          .forEach((item) => {
+            filteredSet.add(item.odsCode);
+          });
         const nintyPercentOfRawRecords = codedRecordsLength * 0.9;
 
         expect(filteredSet.size).is.at.least(nintyPercentOfRawRecords);
