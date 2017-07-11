@@ -11,12 +11,11 @@
     "lint": "eslint --ext .js,.json .",
     "lint-watch": "esw --watch .",
     "precommit": "yarn git-hook",
-    "prepush": "yarn snyk -- test",
-    "snyk-travis": "yarn snyk -- test --org=nhsuk && yarn snyk -- monitor --org=nhsuk",
+    "prepush": "yarn git-hook && yarn snyk test",
     "start": "node app.js",
     "test": "NODE_ENV=test mocha --recursive test",
     "test-watch": "yarn test -- --watch --reporter min",
-    "travis": "yarn git-hook && yarn upload-coverage && yarn snyk-travis",
+    "travis": "yarn git-hook && yarn upload-coverage",
     "upload-coverage": "cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
