@@ -4,9 +4,10 @@
   "description": "DB containing GP profile information",
   "main": "app.js",
   "scripts": {
-    "check-coverage": "istanbul check-coverage --config .istanbul.yml",
-    "generate-coverage": "yarn istanbul -- cover _mocha -- --recursive",
-    "git-hook": "yarn lint && yarn generate-coverage && yarn check-coverage",
+    "coverage-check": "istanbul check-coverage --config .istanbul.yml",
+    "coverage-generate": "yarn istanbul -- cover _mocha -- --recursive",
+    "coverage-upload": "cat ./coverage/lcov.info | coveralls",
+    "git-hook": "yarn lint && yarn coverage-generate && yarn coverage-check",
     "istanbul": "NODE_ENV=test istanbul",
     "lint": "eslint --ext .js,.json .",
     "lint-watch": "esw --watch .",
@@ -14,9 +15,8 @@
     "prepush": "yarn git-hook && yarn snyk test",
     "start": "node app.js",
     "test": "NODE_ENV=test mocha --recursive test",
-    "test-watch": "yarn test -- --watch --reporter min",
-    "travis": "yarn git-hook && yarn upload-coverage",
-    "upload-coverage": "cat ./coverage/lcov.info | coveralls"
+    "test-ci": "yarn git-hook && yarn coverage-upload",
+    "test-watch": "yarn test -- --watch --reporter min"
   },
   "repository": {
     "type": "git",
