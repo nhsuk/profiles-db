@@ -17,7 +17,7 @@ function saveFile(mergedData) {
   fs.writeFileSync(`${outputDir}/gp-data-merged.json`, JSON.stringify(mergedData), 'utf8');
 }
 
-(function app() {
+(() => {
   const startTime = process.hrtime();
 
   const merged = gps.map((gp) => {
@@ -33,5 +33,11 @@ function saveFile(mergedData) {
 
   saveFile(merged);
   const endTime = process.hrtime(startTime);
-  log.info(`Merging GP data sets took: ${prettyHrtime(endTime)}`);
-}());
+
+  log.info({ mergeDatasets: {
+    itemCount: merged.length,
+    timeTaken: prettyHrtime(endTime),
+    datasets: ['appointments', 'codedRecords', 'repeatPrescriptions'],
+  } },
+  'GP datasets merged.');
+})();
