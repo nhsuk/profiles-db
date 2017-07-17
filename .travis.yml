@@ -13,4 +13,4 @@ script: yarn start
 
 after_script: greenkeeper-lockfile-upload
 
-after_success: bash ./scripts/ci-deployment/deploy.sh
+after_success: bash ./scripts/deploy.sh
