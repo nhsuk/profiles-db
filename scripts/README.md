@@ -13,6 +13,10 @@ Installs project's direct dependencies e.g. npm packages.
 [`ci-deployment`](ci-deployment)
 Infrastructure related work.
 
+[`deploy`](deploy)
+Clone [ci-deployment](https://github.com/nhsuk/ci-deployment.git) repo and
+execute `deploy` script.
+
 [`pre-bootstrap`](pre-bootstrap)
 Directs towards base development machine setup.
 
