@@ -1,5 +1,6 @@
 # Dockerised repo for MongoDB, containing GP profile data
 
+[![GitHub Release](https://img.shields.io/github/release/nhsuk/profiles-db.svg)](https://github.com/nhsuk/profiles-db/releases/latest/)
 [![Greenkeeper badge](https://badges.greenkeeper.io/nhsuk/profiles-db.svg)](https://greenkeeper.io/)
 
 [![Build Status](https://travis-ci.org/nhsuk/profiles-db.svg?branch=master)](https://travis-ci.org/nhsuk/profiles-db)
