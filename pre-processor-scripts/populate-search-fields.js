@@ -34,16 +34,14 @@ function cleanse(searchFields) {
 /* global db:true */
 
 db.gps.find().snapshot()
-  .forEach(
-    (gp) => {
-      /* eslint-disable no-param-reassign */
-      gp.searchSurgery = cleanse(gp.address.addressLines.concat([gp.name, gp.address.postcode]));
-      gp.searchDoctors = cleanse(gp.doctors);
-      gp.searchName = cleanse([gp.name]);
-      /* eslint-endisable no-param-reassign */
-      db.gps.save(gp);
-    }
-  );
+  .forEach((gp) => {
+    /* eslint-disable no-param-reassign */
+    gp.searchSurgery = cleanse(gp.address.addressLines.concat([gp.name, gp.address.postcode]));
+    gp.searchDoctors = cleanse(gp.doctors);
+    gp.searchName = cleanse([gp.name]);
+    /* eslint-endisable no-param-reassign */
+    db.gps.save(gp);
+  });
 
 db.gps.createIndex(
   { searchName: 'text', searchSurgery: 'text', searchDoctors: 'text' },
