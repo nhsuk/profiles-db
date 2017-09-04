@@ -34,10 +34,14 @@ function saveFile(mergedData) {
   saveFile(merged);
   const endTime = process.hrtime(startTime);
 
-  log.info({ mergeDatasets: {
-    itemCount: merged.length,
-    timeTaken: prettyHrtime(endTime),
-    datasets: ['appointments', 'codedRecords', 'repeatPrescriptions'],
-  } },
-  'GP datasets merged.');
+  log.info(
+    {
+      mergeDatasets: {
+        itemCount: merged.length,
+        timeTaken: prettyHrtime(endTime),
+        datasets: ['appointments', 'codedRecords', 'repeatPrescriptions'],
+      }
+    },
+    'GP datasets merged.'
+  );
 })();
