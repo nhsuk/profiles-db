@@ -1,3 +1,7 @@
+# **DEPRECATED** - no longer actively maintained
+
+---
+
 # Dockerised repo for MongoDB, containing GP profile data
 
 [![GitHub Release](https://img.shields.io/github/release/nhsuk/profiles-db.svg)](https://github.com/nhsuk/profiles-db/releases/latest/)
